@@ -19,7 +19,7 @@ let mapStateToProps = (state) => {
     return {
         CurrentPage: state.UsersPage.CurrentPage,
         PageSize: state.UsersPage.PageSize,
-        Pages: state.UsersPage.Pages
+        Pages: state.UsersPage.Pages,
     }
 }
 export default connect(mapStateToProps, {

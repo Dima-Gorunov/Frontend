@@ -8,7 +8,7 @@ class Menu extends Component {
         let change = (e) => {
             this.props.changeInput(e.currentTarget.value);
         }
-        let add=()=>{
+        let add = () => {
             this.props.addMenuElement();
         }
         return (

@@ -109,15 +109,16 @@ let UsersReducer = (state = initialState, action) => {
 }
 
 
-
 export const getUsersThunk = (CurrentPage = 1, PageSize = 1) => {
     return (dispatch) => {
         dispatch(toggleStatus(true))
         dispatch(setCurrentPage(CurrentPage))
         usersApi.getUsers(CurrentPage, PageSize)
             .then(response => {
+                dispatch(setTotalUsersCount(response.totalCount))
                 dispatch(toggleStatus(false))
                 dispatch(setUsers(response.items))
+                debugger
             })
     }
 }

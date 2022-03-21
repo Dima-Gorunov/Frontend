@@ -5,7 +5,7 @@ import MyPosts from "./MyPosts";
 import {useParams} from "react-router-dom";
 
 const Profile = (props) => {
-    if (!props.Profile) {
+    if (!props.Profile || props.isFetching) {
         return <Preloader/>
     }
     return (
