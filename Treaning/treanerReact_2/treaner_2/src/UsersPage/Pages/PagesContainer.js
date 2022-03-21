@@ -2,12 +2,12 @@ import React from 'react';
 import Pages from "./Pages";
 import {connect} from "react-redux";
 import {getUsers} from "../../Api/Api";
-import {getUsersThunkCreator, setCurrentPage, setPagesCount, setUsers, toggleStatus} from "../../Reducers/UsersReducer";
+import {getUsersThunk, setCurrentPage, setPagesCount, setUsers, toggleStatus} from "../../Reducers/UsersReducer";
 
 
 const PagesContainer = (props) => {
     let onPageChanged = (pageNumber) => {
-        props.getUsersThunkCreator(pageNumber, props.PageSize);
+        props.getUsersThunk(pageNumber, props.PageSize);
     }
 
     return (
@@ -23,5 +23,5 @@ let mapStateToProps = (state) => {
     }
 }
 export default connect(mapStateToProps, {
-    getUsersThunkCreator
+    getUsersThunk
 })(PagesContainer)

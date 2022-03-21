@@ -1,4 +1,5 @@
 import * as axios from "axios";
+import {setProfile} from "../Reducers/ProfileReducer";
 
 
 const instance = axios.create({
@@ -19,5 +20,18 @@ export const usersApi = {
     },
     follow(id) {
         return instance.post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`)
+    },
+}
+
+export const authApi = {
+    authMe() {
+        return instance.get(`auth/me`)
+    }
+}
+
+
+export const profileApi = {
+    setProfile(userId) {
+        return instance.get(`profile/${userId}`)
     }
 }

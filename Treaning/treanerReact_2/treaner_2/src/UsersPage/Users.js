@@ -1,11 +1,8 @@
 import React from 'react';
-import style from "./Page.module.css";
 import DefaultPhoto from "../Img/UserDefaultPhoto.png"
 import {NavLink} from "react-router-dom";
-import * as axios from "axios";
 import PagesContainer from "./Pages/PagesContainer";
-import {usersApi} from "../Api/Api";
-import {follow, unfollow} from "../Reducers/UsersReducer";
+
 
 const Users = (props) => {
 
@@ -21,10 +18,10 @@ const Users = (props) => {
                         <div>{e.name} id:{e.id}</div>
                         {e.followed ?
                             <button disabled={props.followingInProgress.some(el => el === e.id)} onClick={() => {
-                                props.unfollow(e.id)
+                                props.unfollowThunk(e.id)
                             }}>unfolow</button> :
                             <button disabled={props.followingInProgress.some(el => el === e.id)} onClick={() => {
-                                props.follow(e.id)
+                                props.followThunk(e.id)
                             }}>follow</button>}
                     </div>
                 ))}

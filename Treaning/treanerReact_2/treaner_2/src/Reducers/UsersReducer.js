@@ -109,7 +109,8 @@ let UsersReducer = (state = initialState, action) => {
 }
 
 
-export const getUsersThunkCreator = (CurrentPage = 1, PageSize = 1) => {
+
+export const getUsersThunk = (CurrentPage = 1, PageSize = 1) => {
     return (dispatch) => {
         dispatch(toggleStatus(true))
         dispatch(setCurrentPage(CurrentPage))
@@ -121,7 +122,7 @@ export const getUsersThunkCreator = (CurrentPage = 1, PageSize = 1) => {
     }
 }
 
-export const unfollow = (userId) => {
+export const unfollowThunk = (userId) => {
     return (dispatch) => {
         dispatch(toggleFollowProgress(true, userId));
         usersApi.unfollow(userId)
@@ -134,7 +135,7 @@ export const unfollow = (userId) => {
             })
     }
 }
-export const follow = (userId) => {
+export const followThunk = (userId) => {
     return (dispatch) => {
         dispatch(toggleFollowProgress(true, userId));
         usersApi.follow(userId)

@@ -36,20 +36,16 @@ const HomePageReducer = (state = initialState, action) => {
                 InputText: action.text
             }
         }
-
         case PUSH_MENU_ELEMENT: {
             return {
                 ...state,
                 Menu: [...state.Menu, {name: state.InputText, link: `/${state.InputText.toLowerCase()}`}]
             }
-
         }
-
         default:
             return {
                 ...state
             }
-
     }
 }
 
