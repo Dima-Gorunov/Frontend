@@ -33,6 +33,6 @@ export const profileApi = {
         return instance.get(`profile/${userId}`)
     },
     getStatus(userId) {
-        return instance.get(`profile/status/${userId}`)
+        return instance.get(`profile/status/${userId}`).then(response => response.data)
     }
 }

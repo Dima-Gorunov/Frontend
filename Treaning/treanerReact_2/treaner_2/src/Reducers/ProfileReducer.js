@@ -50,16 +50,10 @@ export const setProfileThunk = (userId) => {
         dispatch(setFetching(true));
         profileApi.setProfile(userId)
             .then(response => {
-                debugger
                 console.log(response);
                 dispatch(setProfile(response.data))
                 dispatch(setFetching(false))
             })
-        profileApi.getStatus(userId)
-            .then(response=>{
-                debugger
-            })
-
     }
 
 }

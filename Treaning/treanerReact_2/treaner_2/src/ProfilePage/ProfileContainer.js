@@ -11,7 +11,7 @@ import WithPreloader from "../Hoc/WithPreloader";
 const ProfileContainer = (props) => {
     let UserId = useParams().UserId
     useEffect(() => {
-        props.setProfileThunk(UserId)
+        props.setProfileThunk(UserId);
     }, [])
 
     return <Profile {...props}/>
