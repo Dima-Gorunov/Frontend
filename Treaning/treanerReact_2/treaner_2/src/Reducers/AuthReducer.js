@@ -1,11 +1,13 @@
 import {authApi, usersApi} from "../Api/Api";
 
 const SET_USER_DATA = "SET_USER_DATA"
+const SET_AUTH_DATA = "SET_AUTH_DATA"
 
 let initialstate = {
     email: null,
     id: null,
     login: null,
+    isAuth: false
 }
 
 
@@ -16,6 +18,12 @@ const AuthReducer = (state = initialstate, action) => {
             return {
                 ...state,
                 ...action.data
+            }
+        }
+        case SET_AUTH_DATA: {
+            return {
+                ...state,
+                isAuth: action.isAuth
             }
         }
         default: {
@@ -44,16 +52,20 @@ const AuthReducer = (state = initialstate, action) => {
 export const authMeThunk = () => {
     return (dispatch) => {
         authApi.authMe()
-            .then(response => {
-                let {email, id, login} = response.data.data
-                dispatch(setUserData(email, id, login))
-                //    Some dispatch(action(element))
-            })
+            .then(response => response.data)
+            .then(data => {
+                    if (data.resultCode === 0) {
+                        let {email, id, login} = data.data
+                        dispatch(setUserData(email, id, login))
+                        dispatch(setAuthData(true))
+                    } else if (data.resultCode !== 0) {
+                        dispatch(setAuthData(false))
+                    }//    Some dispatch(action(element))
+                }
+            )
     }
 }
-
-
 export const setUserData = (email, id, login) => ({type: SET_USER_DATA, data: {email, id, login}})
-
+export const setAuthData = (isAuth) => ({type: SET_AUTH_DATA, isAuth})
 
 export default AuthReducer

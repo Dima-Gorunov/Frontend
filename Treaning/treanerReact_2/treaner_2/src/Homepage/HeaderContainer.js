@@ -7,7 +7,6 @@ import {authMeThunk} from "../Reducers/AuthReducer";
 
 const HeaderContainer = (props) => {
     useEffect(() => {
-        props.authMeThunk();
     },[])
 
     return (

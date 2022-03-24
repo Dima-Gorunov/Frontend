@@ -5,6 +5,8 @@ import {setProfile, setProfileThunk, setUserId} from "../Reducers/ProfileReducer
 import {useParams} from "react-router-dom";
 import * as axios from "axios";
 import Preloader from "../Common/Preloader";
+import {compose} from "redux";
+import WithPreloader from "../Hoc/WithPreloader";
 
 const ProfileContainer = (props) => {
     let UserId = useParams().UserId
@@ -12,11 +14,7 @@ const ProfileContainer = (props) => {
         props.setProfileThunk(UserId)
     }, [])
 
-    return (
-        !props.isFetching
-            ? <Profile {...props}/>
-            : <Preloader/>
-    );
+    return <Profile {...props}/>
 }
 
 let mapStateToProps = (state) => {
@@ -26,8 +24,11 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {
-    setProfile,
-    setUserId,
-    setProfileThunk
-})(ProfileContainer)
+
+export default compose(
+    connect(mapStateToProps, {
+        setProfile,
+        setUserId,
+        setProfileThunk
+    })
+)(ProfileContainer)

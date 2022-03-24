@@ -1,34 +1,32 @@
 import {Component} from "react";
 
 
-class News extends Component {
-
-    render() {
-        let change = (e) => {
-            this.props.ChangeInput(e.currentTarget.value)
-        }
-        return (
-            <div>
-                <div>
-                    {
-                        this.props.News.map((e, index) => (
-                            <div key={`News${index}`}>
-                                <div>
-                                    {e.name}:
-                                </div>
-                                <div>
-                                    {e.post}
-                                </div>
-                            </div>
-                        ))
-                    }
-                </div>
-                <div>
-                    <input value={this.props.InputText} onChange={change} type="text"/>
-                </div>
-            </div>
-        );
+let News = (props) => {
+    let change = (e) => {
+        props.changeInput(e.currentTarget.value)
     }
+    return (
+        <div>
+            <div>
+                {
+                    props.News.map((e, index) => (
+                        <div key={`News${index}`}>
+                            <div>
+                                {e.name}:
+                            </div>
+                            <div>
+                                {e.post}
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+            <div>
+                <input value={props.InputText} onChange={change} type="text"/>
+            </div>
+        </div>
+    );
+
 }
 
 export default News;

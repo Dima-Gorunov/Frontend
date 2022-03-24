@@ -115,10 +115,9 @@ export const getUsersThunk = (CurrentPage = 1, PageSize = 1) => {
         dispatch(setCurrentPage(CurrentPage))
         usersApi.getUsers(CurrentPage, PageSize)
             .then(response => {
-                dispatch(setTotalUsersCount(response.totalCount))
                 dispatch(toggleStatus(false))
+                dispatch(setTotalUsersCount(response.totalCount))
                 dispatch(setUsers(response.items))
-                debugger
             })
     }
 }
@@ -127,7 +126,6 @@ export const unfollowThunk = (userId) => {
     return (dispatch) => {
         dispatch(toggleFollowProgress(true, userId));
         usersApi.unfollow(userId)
-            .then(response => response.data)
             .then(data => {
                 if (data.resultCode === 0) {
                     dispatch(unfollowSuccess(userId))
@@ -140,7 +138,6 @@ export const followThunk = (userId) => {
     return (dispatch) => {
         dispatch(toggleFollowProgress(true, userId));
         usersApi.follow(userId)
-            .then(response => response.data)
             .then(data => {
                 if (data.resultCode === 0) {
                     dispatch(followSuccess(userId))

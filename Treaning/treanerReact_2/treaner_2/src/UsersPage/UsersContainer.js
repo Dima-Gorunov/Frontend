@@ -5,18 +5,19 @@ import {
 } from "../Reducers/UsersReducer";
 import {useEffect} from "react";
 import Users from "./Users";
+import authMeThunk from "../Reducers/AuthReducer";
+import WithAuthRedirect from "../Hoc/WithAuthRedirect";
+import {compose} from "redux";
+import WithPreloaderUsers from "../Hoc/WithPreloader";
 import Preloader from "../Common/Preloader";
 
 const UsersContainer = (props) => {
     useEffect(() => {
-        props.getUsersThunk(props.CurrentPage, props.PageSize)
+        props.getUsersThunk(props.CurrentPage, props.PageSize);
     }, [])
 
-    return props.Loading
-        ? <Preloader/>
-        : <Users {...props}/>
+    return props.Loading ? <Preloader/> : <Users {...props}/>
 }
-
 
 let mapStateToProps = (state) => {
     return {
@@ -29,7 +30,11 @@ let mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {
-    followThunk, unfollowThunk,
-    getUsersThunk
-})(UsersContainer)
+export default compose(
+    connect(mapStateToProps, {
+        followThunk, unfollowThunk,
+        authMeThunk,
+        getUsersThunk
+    }),
+    WithAuthRedirect
+)(UsersContainer)

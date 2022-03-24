@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 const MyCustomLink = (props) => {
     return (
-        <Link to={props.to} {...props}>
+        <Link to={props.to}>
             {props.children}
         </Link>
     );

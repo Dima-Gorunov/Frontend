@@ -1,5 +1,4 @@
 import * as axios from "axios";
-import {setProfile} from "../Reducers/ProfileReducer";
 
 
 const instance = axios.create({
@@ -12,14 +11,13 @@ const instance = axios.create({
 
 export const usersApi = {
     getUsers(pageNumber = 1, pageSize = 5) {
-        return instance.get(`users?page=${pageNumber}&count=${pageSize}`)
-             .then(response => response.data)
+        return instance.get(`users?page=${pageNumber}&count=${pageSize}`).then(response => response.data)
     },
     unfollow(id) {
-        return instance.delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`)
+        return instance.delete(`follow/${id}`).then(response => response.data)
     },
     follow(id) {
-        return instance.post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`)
+        return instance.post(`follow/${id}`).then(response => response.data)
     },
 }
 
@@ -33,5 +31,8 @@ export const authApi = {
 export const profileApi = {
     setProfile(userId) {
         return instance.get(`profile/${userId}`)
+    },
+    getStatus(userId) {
+        return instance.get(`profile/status/${userId}`)
     }
 }

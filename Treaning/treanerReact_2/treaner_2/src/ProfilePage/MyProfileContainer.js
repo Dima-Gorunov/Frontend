@@ -1,22 +1,22 @@
-import {Component} from "react";
+import {Component, useEffect} from "react";
 import MyProfile from "./MyProfile";
 import {connect} from "react-redux";
+import {compose} from "redux";
 
 
-class MyProfileContainer extends Component{
-    render() {
-        return (
-            <MyProfile/>
-        );
-    }
+const MyProfileContainer = (props) => {
+    useEffect(() => {
+
+    }, [])
+    return (
+        <MyProfile {...props}/>
+    );
 }
 
-let mapStateToProps=(state)=>{
-    return{
-
-    }
+let mapStateToProps = (state) => {
+    return {}
 }
 
-export default connect(mapStateToProps,{
-
-})(MyProfileContainer)
+export default compose(
+    connect(mapStateToProps, {})
+)(MyProfileContainer)
