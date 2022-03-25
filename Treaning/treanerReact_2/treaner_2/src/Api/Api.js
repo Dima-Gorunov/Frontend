@@ -29,10 +29,13 @@ export const authApi = {
 
 
 export const profileApi = {
-    setProfile(userId) {
+    getProfile(userId) {
         return instance.get(`profile/${userId}`)
     },
     getStatus(userId) {
         return instance.get(`profile/status/${userId}`).then(response => response.data)
+    },
+    updateStatus(status) {
+        return instance.put(`profile/status`, {status: status}) // request требует status
     }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import DefaultPhoto from "../Img/UserDefaultPhoto.png"
 import {NavLink} from "react-router-dom";
 import PagesContainer from "./Pages/PagesContainer";
+import {setUserId} from "../Reducers/ProfileReducer";
 
 
 const Users = (props) => {
@@ -9,7 +10,10 @@ const Users = (props) => {
         <div>
             <div>
                 {props.Users.map((e, index) => (
-                    <div key={`User${index}`}>
+                    <div key={`User${index}`} onMouseEnter={() => {
+                        props.setUserId(e.id)
+                        console.log(props.userId);
+                    }}>
                         <NavLink to={`/profile/${e.id}`}>
                             <img src={e.photos.small ? e.photos.small : DefaultPhoto}
                                  style={{width: "80px"}} alt=""/>

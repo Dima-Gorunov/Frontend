@@ -6,6 +6,7 @@ import {Navigate} from 'react-router-dom'
 import {authMeThunk} from "../Reducers/AuthReducer";
 import {useEffect} from "react";
 import WithAuthRedirect from "../Hoc/WithAuthRedirect";
+import {compose} from "redux";
 
 let NewsContainer = (props) => {
     useEffect(() => {
@@ -23,6 +24,8 @@ let mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {
-    changeInput, authMeThunk
-})(WithAuthRedirect(NewsContainer));
+export default compose(
+    connect(mapStateToProps, {
+        changeInput, authMeThunk
+    }),
+    WithAuthRedirect)(NewsContainer);

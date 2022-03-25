@@ -1,17 +1,16 @@
 import {useEffect} from "react";
 import {connect} from "react-redux";
 import Profile from "./Profile";
-import {setProfile, setProfileThunk, setUserId} from "../Reducers/ProfileReducer";
+import {getProfileThunk, getUserStatusThunk} from "../Reducers/ProfileReducer";
 import {useParams} from "react-router-dom";
-import * as axios from "axios";
-import Preloader from "../Common/Preloader";
 import {compose} from "redux";
-import WithPreloader from "../Hoc/WithPreloader";
+import ForMyProfile from "../Hoc/ForMyprofile";
 
 const ProfileContainer = (props) => {
     let UserId = useParams().UserId
     useEffect(() => {
-        props.setProfileThunk(UserId);
+        props.getProfileThunk(UserId);
+        props.getUserStatusThunk(UserId)
     }, [])
 
     return <Profile {...props}/>
@@ -20,15 +19,16 @@ const ProfileContainer = (props) => {
 let mapStateToProps = (state) => {
     return {
         Profile: state.ProfilePage.Profile,
+        status: state.ProfilePage.status,
         isFetching: state.ProfilePage.isFetching
     }
 }
 
 
 export default compose(
+    ForMyProfile,
     connect(mapStateToProps, {
-        setProfile,
-        setUserId,
-        setProfileThunk
-    })
+        getProfileThunk,
+        getUserStatusThunk
+    }),
 )(ProfileContainer)

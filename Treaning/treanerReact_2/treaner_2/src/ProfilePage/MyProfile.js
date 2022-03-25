@@ -9,6 +9,12 @@ const MyProfile = (props) => {
     return (
         <div>
             <div>
+                ава
+            </div>
+            <div>
+                name:
+            </div>
+            <div>
                 {
                     !active && <span onClick={() => setActive(true)}>{text}</span>
                 }

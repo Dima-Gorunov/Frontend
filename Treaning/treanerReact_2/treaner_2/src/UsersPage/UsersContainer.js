@@ -10,6 +10,7 @@ import WithAuthRedirect from "../Hoc/WithAuthRedirect";
 import {compose} from "redux";
 import WithPreloaderUsers from "../Hoc/WithPreloader";
 import Preloader from "../Common/Preloader";
+import {setUserId} from "../Reducers/ProfileReducer";
 
 const UsersContainer = (props) => {
     useEffect(() => {
@@ -26,6 +27,7 @@ let mapStateToProps = (state) => {
         CurrentPage: state.UsersPage.CurrentPage,
         PageSize: state.UsersPage.PageSize,
         followingInProgress: state.UsersPage.followingInProgress,
+        userId:state.ProfilePage.userId
     }
 }
 
@@ -34,7 +36,8 @@ export default compose(
     connect(mapStateToProps, {
         followThunk, unfollowThunk,
         authMeThunk,
-        getUsersThunk
+        getUsersThunk,
+        setUserId
     }),
     WithAuthRedirect
 )(UsersContainer)

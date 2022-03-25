@@ -3,11 +3,14 @@ import {profileApi} from "../Api/Api";
 
 const SET_FETCHING = "SET_FETCHING"
 const SET_PROFILE = "SET_PROFILE"
+const SET_STATUS = "SET_STATUS"
 const ADD_POST = "ADD_POST"
 const SET_USER_ID = "SET_USER_ID"
 let initialState = {
     Profile: null,
-    isFetching: false
+    status: null,
+    isFetching: false,
+    userId:null
 }
 
 const ProfileReducer = (state = initialState, action) => {
@@ -21,7 +24,13 @@ const ProfileReducer = (state = initialState, action) => {
         case SET_USER_ID: {
             return {
                 ...state,
-                UserId: action.UserId
+                userId: action.UserId
+            }
+        }
+        case SET_STATUS: {
+            return {
+                ...state,
+                status: action.status ? action.status : "no status"
             }
         }
         case ADD_POST: {
@@ -45,21 +54,36 @@ const ProfileReducer = (state = initialState, action) => {
 }
 
 
-export const setProfileThunk = (userId) => {
+export const getProfileThunk = (userId) => {
     return (dispatch) => {
+        dispatch(setUserId(userId))
         dispatch(setFetching(true));
-        profileApi.setProfile(userId)
+        profileApi.getProfile(userId)
             .then(response => {
-                console.log(response);
                 dispatch(setProfile(response.data))
                 dispatch(setFetching(false))
             })
     }
+}
 
+export const getUserStatusThunk = (userId) => {
+    return (dispatch) => {
+        profileApi.getStatus(userId)
+            .then(response => {
+                dispatch(setUserStatus(response))
+            })
+    }
+}
+
+export const updateStatusThunk = (status) => {
+    return (dispatch) => {
+        profileApi.updateStatus(status)
+    }
 }
 
 export const setFetching = (fetching) => ({type: SET_FETCHING, fetching})
 export const setProfile = (Profile) => ({type: SET_PROFILE, Profile})
 export const addPost = (Post) => ({type: ADD_POST, Post})
 export const setUserId = (UserId) => ({type: SET_USER_ID, UserId})
+export const setUserStatus = (status) => ({type: SET_STATUS, status})
 export default ProfileReducer;

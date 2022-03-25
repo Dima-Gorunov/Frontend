@@ -11,7 +11,7 @@ let reducers = combineReducers({
     UsersPage: UsersReducer,
     NewsPage: NewsPageReducer,
     ProfilePage: ProfileReducer,
-    AuthData: AuthReducer
+    AuthData: AuthReducer,
 })
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));

@@ -12,6 +12,9 @@ const ProfileInfo = (props) => {
             <div>
                 {props.Profile.fullName}
             </div>
+            <div>
+                status: {props.status}
+            </div>
         </div>
     );
 };

@@ -2,10 +2,13 @@ import {Component, useEffect} from "react";
 import MyProfile from "./MyProfile";
 import {connect} from "react-redux";
 import {compose} from "redux";
+import {getProfileThunk, getUserStatusThunk} from "../Reducers/ProfileReducer";
 
 
 const MyProfileContainer = (props) => {
     useEffect(() => {
+        props.getProfileThunk(22813)
+        props.getUserStatusThunk(22813)
 
     }, [])
     return (
@@ -14,9 +17,11 @@ const MyProfileContainer = (props) => {
 }
 
 let mapStateToProps = (state) => {
-    return {}
+    return {
+
+    }
 }
 
 export default compose(
-    connect(mapStateToProps, {})
+    connect(mapStateToProps, {getProfileThunk, getUserStatusThunk})
 )(MyProfileContainer)
