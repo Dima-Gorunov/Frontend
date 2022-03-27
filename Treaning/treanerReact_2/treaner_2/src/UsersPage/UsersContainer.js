@@ -3,7 +3,7 @@ import {
     followThunk, getUsersThunk,
     unfollowThunk
 } from "../Reducers/UsersReducer";
-import {useEffect} from "react";
+import {memo, useEffect, useMemo} from "react";
 import Users from "./Users";
 import authMeThunk from "../Reducers/AuthReducer";
 import WithAuthRedirect from "../Hoc/WithAuthRedirect";
@@ -11,23 +11,29 @@ import {compose} from "redux";
 import WithPreloaderUsers from "../Hoc/WithPreloader";
 import Preloader from "../Common/Preloader";
 import {setUserId} from "../Reducers/ProfileReducer";
+import {
+    getCurrentPageSel,
+    getFollowProgress,
+    getLoadingProcess,
+    getPageSizeSel,
+    getUsersSel
+} from "../Selector's/UsersSelector's";
+import * as react from "react";
 
 const UsersContainer = (props) => {
     useEffect(() => {
         props.getUsersThunk(props.CurrentPage, props.PageSize);
     }, [])
-
     return props.Loading ? <Preloader/> : <Users {...props}/>
 }
 
 let mapStateToProps = (state) => {
     return {
-        Users: state.UsersPage.Users,
-        Loading: state.UsersPage.Loading,
-        CurrentPage: state.UsersPage.CurrentPage,
-        PageSize: state.UsersPage.PageSize,
-        followingInProgress: state.UsersPage.followingInProgress,
-        userId:state.ProfilePage.userId
+        Users: getUsersSel(state),
+        Loading: getLoadingProcess(state),
+        CurrentPage: getCurrentPageSel(state),
+        PageSize: getPageSizeSel(state),
+        followingInProgress: getFollowProgress(state)
     }
 }
 

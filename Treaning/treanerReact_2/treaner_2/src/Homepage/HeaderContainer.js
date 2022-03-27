@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import Header from "./Header";
 import {connect} from "react-redux";
-import {authMeThunk} from "../Reducers/AuthReducer";
+import {getUserData, logOutThunk} from "../Reducers/AuthReducer";
 
 
 
@@ -24,5 +24,5 @@ let mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-  authMeThunk
+    logOutThunk
 })(HeaderContainer);

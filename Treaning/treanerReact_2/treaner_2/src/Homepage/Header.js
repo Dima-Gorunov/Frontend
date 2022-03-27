@@ -13,6 +13,7 @@ const Header = (props) => {
             <div>
                 <div>{props.Login}</div>
                 <NavLink to="login">Login</NavLink>
+                <button onClick={props.logOutThunk}>logOut</button>
             </div>
 
         </div>

@@ -3,36 +3,37 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import {Field, Form, Formik} from "formik";
 import {maxLength} from "../Utils/Validators";
+import {loginThunk} from "../Reducers/AuthReducer";
 
-const Login = (props) => {
+const LoginForm = (props) => {
 
     const submit = (value) => {
-
         console.log(value);
-
+        props.loginThunk(value.email, value.password)
     }
-    const maxLength10=maxLength(10)
-    return (<div className="App">
-        <h1>Contact Us</h1>
-        <Formik
-            initialValues={{name: "", email: ""}}
-            onSubmit={submit}
-            validate={[maxLength10]}
-        >
-            <Form>
-                <Field name="name" type="text"/>
-                <Field name="email" type="email"/>
-                <button type="text">Submit</button>
-                <button>Submit test</button>
-            </Form>
-        </Formik>
-    </div>);
+
+    return (
+        <div className="App">
+            <Formik
+                initialValues={{email: "", password: ""}}
+                onSubmit={submit}
+            >
+                <Form>
+                    <Field name="email" type="email" placeholder="email"/><br/>
+                    <Field name="password" type="password" placeholder="password"/><br/>
+                    <button type="submit">Submit test</button>
+                </Form>
+            </Formik>
+        </div>
+    );
 };
 
 let mapStateToProps = (state) => {
     return {}
 }
 
-export default compose(
-    connect(mapStateToProps, {})
-)(Login);
+
+export default connect(mapStateToProps, {
+    loginThunk
+})(LoginForm)
+

@@ -3,12 +3,12 @@ import MyProfile from "./MyProfile";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {getProfileThunk, getUserStatusThunk} from "../Reducers/ProfileReducer";
+import WithAuthRedirect from "../Hoc/WithAuthRedirect";
+import {getAuth} from "../Selector's/AuthSelector";
 
 
 const MyProfileContainer = (props) => {
     useEffect(() => {
-        props.getProfileThunk(22813)
-        props.getUserStatusThunk(22813)
 
     }, [])
     return (
@@ -18,10 +18,11 @@ const MyProfileContainer = (props) => {
 
 let mapStateToProps = (state) => {
     return {
-
+        isAuth: getAuth(state)
     }
 }
 
 export default compose(
+    WithAuthRedirect,
     connect(mapStateToProps, {getProfileThunk, getUserStatusThunk})
 )(MyProfileContainer)

@@ -1,26 +1,20 @@
 import {Component} from "react";
 import {connect} from "react-redux";
 import Menu from "./Menu";
-import {addMenuElement, changeInput} from "../Reducers/HomePageReducer";
 
 
-let mapStateToProps=(state)=>{
-    return{
-        InputText:state.HomePage.InputText,
-        Menu:state.HomePage.Menu
-    }
+const MenuContainer = (props) => {
+    return (
+        <Menu {...props} />
+    )
 }
-let mapDispatchToProps=(dispatch)=>{
-    return{
-        changeInput:(text)=>{
-            dispatch(changeInput(text))
-        },
-        addMenuElement:()=>{
-            dispatch(addMenuElement());
-        }
+
+let mapStateToProps = (state) => {
+    return {
+        InputText: state.HomePage.InputText,
+        Menu: state.HomePage.Menu
     }
 }
 
 
-let MenuContainer=connect(mapStateToProps, mapDispatchToProps)(Menu);
-export default MenuContainer;
+export default connect(mapStateToProps,{})(MenuContainer);

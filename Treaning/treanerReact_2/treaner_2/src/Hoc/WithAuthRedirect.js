@@ -1,6 +1,7 @@
 import React from 'react';
 import {Navigate} from 'react-router-dom'
 import {connect} from "react-redux";
+import {getAuth} from "../Selector's/AuthSelector";
 
 const WithAuthRedirect = (Component) => {
 
@@ -8,7 +9,7 @@ const WithAuthRedirect = (Component) => {
         return props.isAuth ? <Component {...props} /> : <Navigate to="/login"/>
     }
 
-    let mapStateToPropsForRedirect = (state) => ({isAuth: state.AuthData.isAuth}) // создаём в хоке mapState потому..
+    let mapStateToPropsForRedirect = (state) => ({isAuth: getAuth(state)}) // создаём в хоке mapState потому..
     //                                                                   //..что ему нужны данные об авторизации..
     //                                                                   //..и потому что props в HOK не передать,..
     //                                                                  //..только если снаружи обарачивать в connect()()

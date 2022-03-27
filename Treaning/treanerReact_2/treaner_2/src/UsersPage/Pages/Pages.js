@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import style from "../Page.module.css";
 
 const Pages = (props) => {
-
 
     return (
         props.Pages.map((e, index) => (

@@ -10,10 +10,7 @@ const Users = (props) => {
         <div>
             <div>
                 {props.Users.map((e, index) => (
-                    <div key={`User${index}`} onMouseEnter={() => {
-                        props.setUserId(e.id)
-                        console.log(props.userId);
-                    }}>
+                    <div key={`User${index}`}>
                         <NavLink to={`/profile/${e.id}`}>
                             <img src={e.photos.small ? e.photos.small : DefaultPhoto}
                                  style={{width: "80px"}} alt=""/>

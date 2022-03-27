@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import Pages from "./Pages";
 import {connect} from "react-redux";
 import {getUsers} from "../../Api/Api";
@@ -6,10 +6,10 @@ import {getUsersThunk, setCurrentPage, setPagesCount, setUsers, toggleStatus} fr
 
 
 const PagesContainer = (props) => {
-    let onPageChanged = (pageNumber) => {
-        props.getUsersThunk(pageNumber, props.PageSize);
-    }
 
+    let onPageChanged = (pageNumber) => {
+        return pageNumber !== props.CurrentPage ? props.getUsersThunk(pageNumber, props.PageSize) : null
+    }
     return (
         <Pages {...props} onPageChanged={onPageChanged}/>
     )
