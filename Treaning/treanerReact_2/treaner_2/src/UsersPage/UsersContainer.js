@@ -1,5 +1,6 @@
 import {connect} from "react-redux";
 import {
+    filterUsers,
     followThunk, getUsersThunk,
     unfollowThunk
 } from "../Reducers/UsersReducer";
@@ -15,8 +16,7 @@ import {
     getCurrentPageSel,
     getFollowProgress,
     getLoadingProcess,
-    getPageSizeSel,
-    getUsersSel
+    getPageSizeSel, getUsersSel, getUsersSuperSelector
 } from "../Selector's/UsersSelector's";
 import * as react from "react";
 
@@ -28,6 +28,7 @@ const UsersContainer = (props) => {
 }
 
 let mapStateToProps = (state) => {
+    console.log("mapState")
     return {
         Users: getUsersSel(state),
         Loading: getLoadingProcess(state),
@@ -43,7 +44,8 @@ export default compose(
         followThunk, unfollowThunk,
         authMeThunk,
         getUsersThunk,
-        setUserId
+        setUserId,
+        filterUsers
     }),
     WithAuthRedirect
 )(UsersContainer)

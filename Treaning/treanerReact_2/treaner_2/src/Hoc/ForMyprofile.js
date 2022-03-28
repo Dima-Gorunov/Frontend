@@ -10,7 +10,6 @@ const ForMyProfile = (Component) => {
 
     let mapStateToProps = (state) => {
         return {
-
         }
     }
 

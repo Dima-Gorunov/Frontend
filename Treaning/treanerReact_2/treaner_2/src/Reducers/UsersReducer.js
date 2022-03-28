@@ -10,6 +10,7 @@ const FOLLOW = "FOLLOW"
 const UNFOLLOW = "UNFOLLOW"
 const SIZE_CHANGED = "SIZE_CHANGED"
 const TOGGLE_IS_FOLLOW_PROGRESS = "TOGGLE_IS_FOLLOW_PROGRESS"
+const FILTER_USERS = "FILTER_USERS"
 let initialState = {
     Users: [],
     CurrentPage: 1,
@@ -91,6 +92,13 @@ let UsersReducer = (state = initialState, action) => {
                 })]
             }
         }
+        case FILTER_USERS: {
+            debugger
+            return {
+                ...state,
+                Users: [...state.Users.filter(e => e.id % 2 === 0)]
+            }
+        }
         case TOGGLE_IS_FOLLOW_PROGRESS: {
             return {
                 ...state,
@@ -101,6 +109,7 @@ let UsersReducer = (state = initialState, action) => {
         }
 
         default: {
+            debugger
             return {
                 ...state,
             }
@@ -156,4 +165,6 @@ export const toggleStatus = (Status) => ({type: TOGGLE_IS_LOADING, Status})
 export const followSuccess = (id) => ({type: FOLLOW, id})
 export const unfollowSuccess = (id) => ({type: UNFOLLOW, id})
 export const toggleFollowProgress = (isFetching, userId) => ({type: TOGGLE_IS_FOLLOW_PROGRESS, isFetching, userId})
+export const filterUsers = () => ({type: FILTER_USERS})
+export const testDispatch=()=>({type:null})
 export default UsersReducer;

@@ -1,13 +1,19 @@
-import React from 'react';
+import React, {useMemo, useState} from 'react';
 import DefaultPhoto from "../Img/UserDefaultPhoto.png"
 import {NavLink} from "react-router-dom";
 import PagesContainer from "./Pages/PagesContainer";
 import {setUserId} from "../Reducers/ProfileReducer";
+import {testDispatch} from "../Reducers/UsersReducer";
 
 
 const Users = (props) => {
+    console.log('render')
+
     return (
         <div>
+            <div>
+                <button onClick={()=>props.filterUsers()} >filter</button>
+            </div>
             <div>
                 {props.Users.map((e, index) => (
                     <div key={`User${index}`}>
