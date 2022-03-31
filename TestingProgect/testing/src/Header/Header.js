@@ -1,16 +1,35 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Burger from "../img/background/mobile/Burger.png"
 import LogoSvg from "../img/LogoSvg";
 import WebAlternativeSvg from "../img/WebAlternativeSvg";
 
 const Header = () => {
+
+    const [menu, setActive] = useState("header__items-container")
+    const [burger, setBurger] = useState("burger")
+    const [darkBg,setDarkBg]=useState("dark_background_disActive")
+    const openMenu = () => {
+        if (menu === "header__items-container_active") {
+            setActive("header__items-container")
+            setBurger("burger")
+            setDarkBg("dark_background_disActive")
+        } else {
+            setActive("header__items-container_active")
+            setBurger("burger_active")
+            setDarkBg("dark_background_active")
+        }
+
+    }
+
+
     return (
         <div className="header">
-            <div className="header_content-container" >
+            <div className={darkBg}></div>
+            <div className="header_content-container">
                 <div className="logo-container">
                     <LogoSvg/>
                 </div>
-                <div className="logo_text-container" >
+                <div className="logo_text-container">
                     <WebAlternativeSvg/>
                 </div>
                 <div className="header_contacts-container">
@@ -23,25 +42,24 @@ const Header = () => {
                         <a href="">+7 (4212) 25-30-85</a>
                     </div>
                 </div>
-                <div className="header__items-container">
+                <div className={menu}>
                     <ul>
-                        <li>О студии</li>
-                        <li>Портфолио</li>
-                        <li>Наши услуги</li>
-                        <li>Новости</li>
-                        <li>Отзывы</li>
-                        <li>Контакты</li>
+                        <li><a href="">О студии</a></li>
+                        <li><a href="">Портфолио</a></li>
+                        <li><a href="">Наши услуги</a></li>
+                        <li><a href="">Новости</a></li>
+                        <li><a href="">Отзывы</a></li>
+                        <li><a href="">Контакты</a></li>
                     </ul>
                 </div>
-                <div className="burger-container">
-                    <div className="burger">
+                <div className="burger-container" onClick={openMenu}>
+                    <div className={burger}>
                         <span/>
                         <span/>
                         <span/>
                     </div>
                 </div>
             </div>
-
         </div>
     );
 };

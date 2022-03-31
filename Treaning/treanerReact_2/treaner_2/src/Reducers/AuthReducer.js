@@ -61,7 +61,7 @@ export const getUserData = () => {
     }
 }
 
-export const loginThunk = (email, password, rememberMe ) => {
+export const loginThunk = (email, password, rememberMe) => {
     return (dispatch) => {
         authApi.login(email, password, rememberMe)
             .then(response => {

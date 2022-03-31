@@ -9,7 +9,6 @@ import MyProfileContainer from "./ProfilePage/MyProfileContainer";
 import Login from "./Common/Login";
 import HomePageContainer from "./Homepage/HomePageContainer";
 import {connect} from "react-redux";
-import {getUserData} from "./Reducers/AuthReducer";
 import {compose} from "redux";
 import {initializedThunk} from "./Reducers/AppReducer";
 import Preloader from "./Common/Preloader";
@@ -20,7 +19,7 @@ const App = (props) => {
         props.initializedThunk();
     }, [])
 
-    if (!props.initialized){
+    if (!props.initialized) {
         return <Preloader/>
     }
     return (
@@ -47,7 +46,6 @@ let mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps, {
-        getUserData,
         initializedThunk
     })
 )(App);
