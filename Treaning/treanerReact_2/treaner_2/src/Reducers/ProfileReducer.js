@@ -3,9 +3,9 @@ import {profileApi} from "../Api/Api";
 
 const SET_FETCHING = "SET_FETCHING"
 const SET_PROFILE = "SET_PROFILE"
-const SET_STATUS = "SET_STATUS"
+const SET_PROFILE_STATUS = "SET_PROFILE_STATUS"
 const ADD_POST = "ADD_POST"
-const SET_USER_ID = "SET_USER_ID"
+const SET_PROFILE_ID = "SET_PROFILE_ID"
 let initialState = {
     Profile: null,
     status: null,
@@ -21,13 +21,13 @@ const ProfileReducer = (state = initialState, action) => {
                 Profile: action.Profile
             }
         }
-        case SET_USER_ID: {
+        case SET_PROFILE_ID: {
             return {
                 ...state,
                 userId: action.UserId
             }
         }
-        case SET_STATUS: {
+        case SET_PROFILE_STATUS: {
             return {
                 ...state,
                 status: action.status ? action.status : "no status"
@@ -56,7 +56,7 @@ const ProfileReducer = (state = initialState, action) => {
 
 export const getProfileThunk = (userId) => {
     return (dispatch) => {
-        dispatch(setUserId(userId))
+        dispatch(setProfileId(userId))
         dispatch(setFetching(true));
         profileApi.getProfile(userId)
             .then(response => {
@@ -70,7 +70,7 @@ export const getUserStatusThunk = (userId) => {
     return (dispatch) => {
         profileApi.getStatus(userId)
             .then(response => {
-                dispatch(setUserStatus(response))
+                dispatch(setProfileStatus(response))
             })
     }
 }
@@ -83,7 +83,6 @@ export const updateStatusThunk = (status) => {
 
 export const setFetching = (fetching) => ({type: SET_FETCHING, fetching})
 export const setProfile = (Profile) => ({type: SET_PROFILE, Profile})
-export const addPost = (Post) => ({type: ADD_POST, Post})
-export const setUserId = (UserId) => ({type: SET_USER_ID, UserId})
-export const setUserStatus = (status) => ({type: SET_STATUS, status})
+export const setProfileId = (UserId) => ({type: SET_PROFILE_ID, UserId})
+export const setProfileStatus = (status) => ({type: SET_PROFILE_STATUS, status})
 export default ProfileReducer;

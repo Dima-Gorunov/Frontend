@@ -2,8 +2,6 @@ import React, {useMemo, useState} from 'react';
 import DefaultPhoto from "../Img/UserDefaultPhoto.png"
 import {NavLink} from "react-router-dom";
 import PagesContainer from "./Pages/PagesContainer";
-import {setUserId} from "../Reducers/ProfileReducer";
-import {testDispatch} from "../Reducers/UsersReducer";
 
 
 const Users = (props) => {

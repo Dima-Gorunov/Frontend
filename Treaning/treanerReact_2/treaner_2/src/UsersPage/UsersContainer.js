@@ -11,7 +11,6 @@ import WithAuthRedirect from "../Hoc/WithAuthRedirect";
 import {compose} from "redux";
 import WithPreloaderUsers from "../Hoc/WithPreloader";
 import Preloader from "../Common/Preloader";
-import {setUserId} from "../Reducers/ProfileReducer";
 import {
     getCurrentPageSel,
     getFollowProgress,
@@ -44,7 +43,6 @@ export default compose(
         followThunk, unfollowThunk,
         authMeThunk,
         getUsersThunk,
-        setUserId,
         filterUsers
     }),
     WithAuthRedirect

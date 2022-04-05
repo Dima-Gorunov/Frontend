@@ -1,8 +1,5 @@
-import MyProfile from "../ProfilePage/MyProfile";
-import {getProfileThunk, getUserStatusThunk, updateStatusThunk} from "../Reducers/ProfileReducer";
 import {connect} from "react-redux";
 import React from "react";
-import {Navigate} from 'react-router-dom'
 
 const ForMyProfile = (Component) => {
 

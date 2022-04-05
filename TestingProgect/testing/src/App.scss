@@ -14,7 +14,7 @@ html {
   width: 100%;
   height: 100%;
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
 
 }
 
@@ -23,6 +23,7 @@ html {
 
 .header {
   width: 100%;
+  min-width: 320px;
   background-color: #202020;
 
 }
@@ -241,8 +242,9 @@ html {
 
 //-------------BODY-------------------\/
 .body {
-  z-index: 0;
+  z-index: -3;
   font-size: 16px;
+  min-width: 320px;
   background-color: #171718;
 }
 
@@ -257,22 +259,28 @@ html {
     width: 320px;
     height: 534px;
     margin: 0 auto;
+
   }
 
   .head__background {
     :first-child {
       position: absolute;
       top: 0;
+      right: 0;
+      left: 0;
+      margin: 0 auto;
       z-index: -1;
-      width: 320px;
+      min-width: 320px;
     }
 
     :nth-child(2) {
       position: absolute;
       top: 174px;
-      right: 59px;
+      right: 0;
+      left: 0;
+      margin: 0 auto;
       z-index: -1;
-      width: 201px;
+      min-width: 201px;
     }
 
     :nth-child(3) {
@@ -291,7 +299,9 @@ html {
     :last-child {
       position: absolute;
       top: 168px;
-      right: 66px;
+      right: 0;
+      left: 0;
+      margin: 0 auto;
       z-index: 0;
     }
   }
@@ -324,7 +334,7 @@ html {
     }
 
     .heading-bottom_text {
-      text-shadow: 0px 3px 3px rgb(14 14 14 / 30%);
+      text-shadow: 0 3px 3px rgb(14 14 14 / 30%);
       font-size: 20.8px;
       line-height: 134%;
     }
@@ -345,6 +355,7 @@ html {
       display: flex;
       width: 280px;
       height: 50px;
+      margin-bottom: 11px;
       align-items: center;
       justify-content: space-between;
 
@@ -380,9 +391,9 @@ html {
 
 }
 
-.how{
+.how {
 
-  .how_content-container{
+  .how_content-container {
     width: 320px;
     position: relative;
     min-height: 518px;
@@ -392,25 +403,143 @@ html {
     margin: 0 auto;
   }
 
-  .how_heading-container{
+  .how_heading-container {
+    width: 240px;
     text-align: center;
     color: #393939;
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 14px;
-    margin-bottom: 24px;
+    margin: 0 auto 24px;
   }
-  .how_main-container{
+
+  .how_main-container {
     position: relative;
 
-    .main_content-container{
+    .main_content-container {
       margin-left: 30px;
     }
 
-    .how_image{
-      svg{
+    .group {
+
+    }
+
+    .group_container {
+      display: flex;
+
+      ul {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        list-style: none;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+
+        :first-child {
+          :first-child {
+            color: #EF8B54;
+          }
+        }
+
+        li {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          position: relative;
+
+          > :first-child {
+            width: 41px;
+            height: 40px;
+            margin-right: 11px;
+            font-size: 32px;
+            line-height: 39px;
+            text-align: center;
+          }
+
+          :nth-child(2) {
+            font-size: 12px;
+            line-height: 14.63px;
+          }
+
+          .right-arrow {
+            height: 13.51px;
+            position: absolute;
+            top: 13px;
+            right: 14.74px;
+
+            :hover {
+              cursor: pointer;
+            }
+
+            svg {
+              transition: 0.25s;
+              margin: 0;
+              padding: 0;
+              border: none;
+            }
+          }
+
+          .right-arrow-active {
+            height: 13.51px;
+            position: absolute;
+            top: 13px;
+            right: 14.74px;
+
+            :hover {
+              cursor: pointer;
+            }
+
+            svg {
+              transition: 0.25s;
+              transform: rotate(180deg);
+              margin: 0;
+              padding: 0;
+              border: none;
+            }
+          }
+
+          .rolling-out-text {
+            display: none;
+            margin-left: 3px;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 400;
+            font-size: 11px;
+            line-height: 17px;
+            color: grey;
+          }
+
+          .rolling-out-text-active {
+
+            display: block;
+            margin-left: 3px;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 400;
+            font-size: 11px;
+            line-height: 17px;
+            color: grey;
+          }
+
+        }
+
+        hr {
+          margin: 15px 0;
+          padding: 0;
+          border: none;
+          border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+      }
+
+      .group_text {
+
+      }
+
+    }
+
+
+    .how_image {
+      svg {
         position: absolute;
-        top:0;
+        top: 10px;
         left: 15px;
       }
     }
@@ -419,13 +548,92 @@ html {
 
 }
 
+.features {
+  .features-container {
+    position: relative;
+    z-index: 0;
+    width: 320px;
+    height: 1484px;
+    margin: 0 auto;
+  }
 
+  .features_items-container {
+    padding-top: 70px;
+    width: 280px;
+    margin: 0 auto;
+    .features_item {
+      width: 100%;
+    }
+
+    .features_image{
+      width: 100%;
+        display: flex;
+      img{
+        margin: 0 auto;
+        width: 200px;
+      }
+    }
+
+    .features_text-container{
+        text-align: center;
+
+      .features_heading_text{
+        margin-bottom: 30px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 25px;
+      }
+      .features_bottom_text{
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 19px;
+      }
+    }
+    hr {
+      width: 200px;
+      margin: 40px auto;
+      padding: 0;
+      border: none;
+      border-top: 1px solid;
+      opacity: 10%;
+    }
+
+  }
+
+  .features__background {
+    img {
+      z-index: -1;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      right: 0;
+    }
+  }
+}
+
+.cases{
+  .cases-container{
+    position: relative;
+  }
+
+  .cases__background{
+
+    img{
+      position: absolute;
+      width: 280px;
+    }
+  }
+}
 //-------------BODY-------------------/\
 
 //-------------FOOTER-----------------\/
 .footer {
   background-color: #2E2E2E;
   font-size: 16px;
+  min-width: 320px;
   font-family: 'Montserrat', sans-serif;
 }
 
