@@ -1,8 +1,7 @@
 import {connect} from "react-redux";
 import {
     filterUsers,
-    followThunk, getUsersThunk,
-    unfollowThunk
+    followUnFollowThunk, getUsersThunk, setPageSizeThunk,
 } from "../Reducers/UsersReducer";
 import {memo, useEffect, useMemo} from "react";
 import Users from "./Users";
@@ -40,10 +39,11 @@ let mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps, {
-        followThunk, unfollowThunk,
+        followUnFollowThunk,
         authMeThunk,
         getUsersThunk,
-        filterUsers
+        filterUsers,
+        setPageSizeThunk
     }),
     WithAuthRedirect
 )(UsersContainer)

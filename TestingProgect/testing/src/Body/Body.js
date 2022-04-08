@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Head_translucent_bg from "../img/Body/Head/Head_translucent_bg.png"
 import telephone from "../img/Body/telephone.png"
 import ellipse from "../img/Body/Ellipse.png"
@@ -13,19 +13,51 @@ import FeatOne from "../img/Body/Features/Feat_1.png"
 import FeatTwo from "../img/Body/Features/Feat_2.png"
 import FeatThree from "../img/Body/Features/Feat_3.png"
 import CasesBackground from "../img/Body/Cases/Placeholder.png"
+import CasesOne from "../img/Body/Cases/CasesOne.png"
+import CasesTwo from "../img/Body/Cases/CasesTwopng.png"
+import CasesTHREE from "../img/Body/Cases/CasesTHREE.png"
+import CasesFour from "../img/Body/Cases/CasesFour.png"
+import LoveSvg from "../img/Body/Cases/LoveSvg";
+import SwitchesSvg from "../img/Body/Clients/SwitchesSvg";
+import FirstClients from "../img/Body/Clients/FirstClient.png"
+import SecondClients from "../img/Body/Clients/SecondClients.png"
+import ThirdClients from "../img/Body/Clients/ThirdClient.png"
+import FourthClients from "../img/Body/Clients/FourthClient.png"
+import FormBackground from "../img/Body/Form/fancycrave-277756-unsplash.png"
+
 const Body = () => {
 
     const setClassActive = (e) => {
         console.log(e.currentTarget.children[2].className);
         if (e.currentTarget.children[2].className === "right-arrow") {
-            e.currentTarget.children[2].className = "right-arrow-active"
-            e.currentTarget.children[3].className = "rolling-out-text-active"
+            e.currentTarget.children[2].className = "right-arrow__active"
+            e.currentTarget.children[3].className = "rolling-out-text__active"
         } else {
             e.currentTarget.children[2].className = "right-arrow"
             e.currentTarget.children[3].className = "rolling-out-text"
         }
     }
-
+    const [switchElem, setSwitchElem] = useState(1)
+    const switchNext = () => {
+        if (switchElem <= document.querySelectorAll('.clients_image').length + 1) {
+            switchElem === 3 ? setSwitchElem(0)
+                : setSwitchElem(switchElem + 1)
+            let switchesClientsClassActive = document.querySelectorAll('.clients_image__active')
+            switchesClientsClassActive[0].className = "clients_image"
+            let switchesClientsClass = document.querySelectorAll('.clients_image')
+            switchesClientsClass[switchElem].className = "clients_image__active";
+        }
+    }
+    const switchPrev = () => {
+        if (switchElem >= 0) {
+            switchElem === 0 ? setSwitchElem(document.querySelectorAll('.clients_image').length)
+                : setSwitchElem(switchElem - 1)
+            let switchesClientsClassActive = document.querySelectorAll('.clients_image__active')
+            switchesClientsClassActive[0].className = "clients_image"
+            let switchesClientsClass = document.querySelectorAll('.clients_image')
+            switchesClientsClass[switchElem].className = "clients_image__active";
+        }
+    }
     return (
         <div className="body">
             <div className="body_content-container">
@@ -205,7 +237,157 @@ const Body = () => {
                 <div className="cases">
                     <div className="cases-container">
                         <div className="cases__background">
+                            <img src={CasesBackground} alt=""/>
+                        </div>
 
+                        <div className="cases_items-container">
+                            <div className="our_cases_text">
+                                НАШИ КЕЙСЫ
+                            </div>
+                            <div className="cases_item">
+                                <div className="cases_item_image">
+                                    <img src={CasesOne} alt=""/>
+                                </div>
+                                <div className="cases_item_text-container">
+                                    <div className="head_text">
+                                        Королевство цветов
+                                    </div>
+                                    <div className="bottom_text">
+                                        Интернет магазин
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="cases_item">
+                                <div className="cases_item_image">
+                                    <img src={CasesTwo} alt=""/>
+                                </div>
+                                <div className="cases_item_text-container">
+                                    <div className="head_text">
+                                        Мастер климат
+                                    </div>
+                                    <div className="bottom_text">
+                                        Интернет магазин
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="cases_item">
+                                <div className="cases_item_image">
+                                    <img src={CasesTHREE} alt=""/>
+                                </div>
+                                <div className="cases_item_text-container">
+                                    <div className="head_text">
+                                        Новая аптека
+                                    </div>
+                                    <div className="bottom_text">
+                                        Интернет магазин
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="cases_item">
+                                <div className="cases_item_image">
+                                    <img src={CasesFour} alt=""/>
+                                </div>
+                                <div className="cases_item_text-container">
+                                    <div className="head_text">
+                                        Восточный Тех Резерв
+                                    </div>
+                                    <div className="bottom_text">
+                                        Интернет магазин
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="cases_application">
+                                <div className="application-head_text-container">
+                                    <div className="application_image">
+                                        <LoveSvg/>
+                                    </div>
+                                    <div className="application_text">
+                                        Оставьте свою заявку, чтобы получить БЕСПЛАТНУЮ консултацию!
+                                    </div>
+                                </div>
+                                <div className="application_button">
+                                    <div className="application_button_text">
+                                        Оставить заявку
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <hr/>
+                    </div>
+                </div>
+                {/*------------*/}
+                <div className="clients">
+                    <div className="clients-container">
+                        <div className="head_text">
+                            НАШИ КЛИЕНТЫ
+                        </div>
+                        <div className="clients_image_group">
+                            <div className="clients_image__active">
+                                <img src={FirstClients} alt=""/>
+                            </div>
+                            <div className="clients_image">
+                                <img src={SecondClients} alt=""/>
+                            </div>
+                            <div className="clients_image">
+                                <img src={ThirdClients} alt=""/>
+                            </div>
+                            <div className="clients_image">
+                                <img src={FourthClients} alt=""/>
+                            </div>
+                        </div>
+                        <div className="switches_container">
+                            <div className="switch" onClick={switchPrev}>
+                                <SwitchesSvg/>
+                            </div>
+                            <div className="switch" onClick={switchNext}>
+                                <SwitchesSvg/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {/*------------*/}
+                <div className="form">
+                    <div className="form-container">
+                        <div className="form_background">
+                            <img src={FormBackground} alt=""/>
+                        </div>
+                        <div className="form_content-container">
+                            <div className="form_head_text">
+                                Интернет-магазин, который приносит прибыль
+                            </div>
+                            <div className="form_bonus_text">
+                                <ul>
+                                    <li><span></span> Получите бесплатно</li>
+                                    <li><span/><span/>Личная косультация</li>
+                                    <li><span/><span/>Стратегия запуска и продвижения</li>
+                                    <li><span/><span/>Коммерческое предложение</li>
+                                </ul>
+                            </div>
+                            <div className="directly_form_head_text">
+                                Оставьте заявку, чтобы узнать, как создать свой Интернет-магазин
+                            </div>
+                            <div className="directly_form">
+                                <input className="default_form" type="text" placeholder={"Имя"}/>
+
+                                <input className="default_form" type="text" placeholder={"+7 (000) 000-00-00"}/>
+
+                                <textarea className="form_about" type="text"
+                                       placeholder={"Расскажите о своей задаче"}/>
+
+                                <div className="form_checkbox">
+                                    <div>
+                                        <input type="checkbox" className="checkbox" id="cb1" placeholder={"qweqwe"}/>
+                                    </div>
+                                    <label className="checkbox_label" htmlFor="cb1">
+                                        Нажимая на кнопку "Отправить", я даю
+                                        согласие на обработку
+                                        персональных данных.
+                                    </label>
+                                </div>
+                                <input className="checkbox_label" type="checkbox" />
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -15,7 +15,7 @@ const Header = () => {
             setDarkBg("dark_background_disActive")
         } else {
             setActive("header__items-container_active")
-            setBurger("burger_active")
+            setBurger("burger__active")
             setDarkBg("dark_background_active")
         }
 

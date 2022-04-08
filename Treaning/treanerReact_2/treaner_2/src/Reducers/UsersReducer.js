@@ -8,6 +8,7 @@ const SET_PAGES_COUNT = "SET_PAGES_COUNT"
 const TOGGLE_IS_LOADING = "TOGGLE_IS_LOADING"
 const FOLLOW = "FOLLOW"
 const UNFOLLOW = "UNFOLLOW"
+const FOLLOW_UNFOLLOW = "FOLLOW_UNFOLLOW"
 const SIZE_CHANGED = "SIZE_CHANGED"
 const TOGGLE_IS_FOLLOW_PROGRESS = "TOGGLE_IS_FOLLOW_PROGRESS"
 const FILTER_USERS = "FILTER_USERS"
@@ -60,30 +61,50 @@ let UsersReducer = (state = initialState, action) => {
                 Loading: action.Status
             }
         }
-        case FOLLOW: {
+
+        case FOLLOW:{
             return {
                 ...state,
-                Users: [...state.Users.map(e => {
-                    if (action.id === e.id) {
+                Users: [ ...state.Users.map(e=>{
+                    if (action.userId===e.id){
                         return {
                             ...e,
-                            followed: true
+                            followed:true
                         }
                     }
-                    return {
+
+                    return{
                         ...e
                     }
                 })]
             }
         }
-        case UNFOLLOW: {
+        case UNFOLLOW:{
+            return {
+                ...state,
+                Users: [ ...state.Users.map(e=>{
+                    if (action.userId===e.id){
+                        return {
+                            ...e,
+                            followed:false
+                        }
+                    }
+
+                    return{
+                        ...e
+                    }
+                })]
+            }
+        }
+
+        case FOLLOW_UNFOLLOW: {
             return {
                 ...state,
                 Users: [...state.Users.map(e => {
-                    if (action.id === e.id) {
+                    if (action.user.id === e.id) {
                         return {
                             ...e,
-                            followed: false
+                            followed: !action.user.followed
                         }
                     }
                     return {
@@ -93,7 +114,6 @@ let UsersReducer = (state = initialState, action) => {
             }
         }
         case FILTER_USERS: {
-            debugger
             return {
                 ...state,
                 Users: [...state.Users.filter(e => e.id % 2 === 0)]
@@ -109,7 +129,6 @@ let UsersReducer = (state = initialState, action) => {
         }
 
         default: {
-            debugger
             return {
                 ...state,
             }
@@ -119,40 +138,52 @@ let UsersReducer = (state = initialState, action) => {
 
 
 export const getUsersThunk = (CurrentPage = 1, PageSize = 1) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleStatus(true))
         dispatch(setCurrentPage(CurrentPage))
-        usersApi.getUsers(CurrentPage, PageSize)
-            .then(response => {
-                dispatch(toggleStatus(false))
-                dispatch(setTotalUsersCount(response.totalCount))
-                dispatch(setUsers(response.items))
-            })
+        let response = await usersApi.getUsers(CurrentPage, PageSize)
+        dispatch(toggleStatus(false))
+        dispatch(setTotalUsersCount(response.totalCount))
+        dispatch(setUsers(response.items))
     }
 }
 
-export const unfollowThunk = (userId) => {
-    return (dispatch) => {
+export const followThunk = (userId) => {
+    return async (dispatch) => {
         dispatch(toggleFollowProgress(true, userId));
-        usersApi.unfollow(userId)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(unfollowSuccess(userId))
-                }
-                dispatch(toggleFollowProgress(false, userId))
-            })
+        let data = await usersApi.follow(userId)
+        if (data.resultCode === 0) {
+            dispatch(followSuccess(userId))
+        }
+        dispatch(toggleFollowProgress(false, userId))
     }
 }
-export const followThunk = (userId) => {
-    return (dispatch) => {
+export const unFollowThunk = (userId) => {
+    return async (dispatch) => {
         dispatch(toggleFollowProgress(true, userId));
-        usersApi.follow(userId)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(followSuccess(userId))
-                }
-                dispatch(toggleFollowProgress(false, userId))
-            })
+        let data = await usersApi.unfollow(userId)
+        if (data.resultCode === 0) {
+            dispatch(unFollowSuccess(userId))
+        }
+        dispatch(toggleFollowProgress(false, userId))
+    }
+}
+
+export const setPageSizeThunk=(size)=>{
+    return async dispatch=>{
+        dispatch(getUsersThunk(1,size))
+    }
+}
+
+
+export const followUnFollowThunk = (user) => {
+    return async (dispatch) => {
+        dispatch(toggleFollowProgress(true, user.id));
+        let data = user.followed ? await usersApi.unfollow(user.id) : await usersApi.follow(user.id)
+        if (data.resultCode === 0) {
+            dispatch(followUnFollowSuccess(user))
+        }
+        dispatch(toggleFollowProgress(false, user.id))
     }
 }
 
@@ -162,9 +193,10 @@ export const setCurrentPage = (Page) => ({type: SET_CURRENT_PAGE, Page})
 export const setTotalUsersCount = (TotalCount) => ({type: SET_TOTAL_USERS_COUNT, TotalCount})
 export const setPagesCount = (Pages) => ({type: SET_PAGES_COUNT, Pages})
 export const toggleStatus = (Status) => ({type: TOGGLE_IS_LOADING, Status})
-export const followSuccess = (id) => ({type: FOLLOW, id})
-export const unfollowSuccess = (id) => ({type: UNFOLLOW, id})
+export const followUnFollowSuccess = (user) => ({type: FOLLOW_UNFOLLOW, user})
+export const followSuccess = (userId) => ({type: FOLLOW, userId})
+export const unFollowSuccess = (userId) => ({type: UNFOLLOW, userId})
 export const toggleFollowProgress = (isFetching, userId) => ({type: TOGGLE_IS_FOLLOW_PROGRESS, isFetching, userId})
 export const filterUsers = () => ({type: FILTER_USERS})
-export const testDispatch=()=>({type:null})
+export const testDispatch = () => ({type: null})
 export default UsersReducer;
