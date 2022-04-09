@@ -560,6 +560,8 @@ html {
 }
 
 .features {
+  padding-bottom: 120px;
+
   .features-container {
     position: relative;
     z-index: 0;
@@ -628,6 +630,8 @@ html {
 }
 
 .cases {
+  background-image: url("../src/img/Body/Cases/Placeholder.png");
+  background-size: 100% 100%;
 
   .cases-container {
     position: relative;
@@ -643,27 +647,27 @@ html {
     }
   }
 
-  .cases__background {
-    img {
-      position: absolute;
-      z-index: -1;
-      width: 100%;
-      max-height: 1572px;
-      right: 0;
-      left: 0;
-      margin: 0 auto;
-    }
-  }
+  .our_cases_text-container {
+    width: 280px;
+    margin: 0 auto;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 20.8px;
+    line-height: 25.36px;
 
-  .our_cases_text {
-    margin-left: 20px;
-    margin-bottom: 30px;
+    .our_cases_text {
+      margin-bottom: 30px;
+
+    }
+
+    .our_cases_text__desktop {
+      display: none;
+    }
   }
 
   .cases_items-container {
     width: 280px;
     margin: 0 auto;
-    padding-top: 120px;
   }
 
   .cases_item {
@@ -677,11 +681,15 @@ html {
   }
 
   .cases_item_image {
-    width: 246px;
     margin: 0 auto;
     margin-bottom: 7px;
 
-    img {
+    :first-child {
+
+    }
+
+    :last-child {
+      display: none;
     }
   }
 
@@ -712,6 +720,8 @@ html {
     border-radius: 4px;
     display: flex;
     flex-direction: column;
+    width: 280px;
+    margin: 0 auto;
 
     .application-head_text-container {
       display: flex;
@@ -753,7 +763,12 @@ html {
 
 .clients {
 
-  padding-bottom: 120px;
+  .clients_background {
+    img {
+      display: none;
+    }
+  }
+
 
   .clients-container {
     width: 264px;
@@ -773,15 +788,24 @@ html {
     display: flex;
     justify-content: center;
 
-    img {
-      width: 210px;
-    }
 
     .clients_image {
       display: none;
 
+      > :first-child {
+        width: 231px;
+      }
+
       &__active {
         display: flex;
+
+        > :first-child {
+          width: 231px;
+        }
+
+        > :last-child {
+          display: none;
+        }
       }
     }
   }
@@ -790,7 +814,7 @@ html {
     width: 135px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 
     > :last-child {
       transform: scaleX(-1);
@@ -806,33 +830,28 @@ html {
 }
 
 .form {
+  position: relative;
+  padding-bottom: 85px;
+  background-image: url("../src/img/Body/Form/fancycrave-277756-unsplash.png  ");
+  background-size: 100% 130%;
+
   .form-container {
+    padding-top: 120px;
     position: relative;
     margin: 0 auto;
     z-index: 0;
+    display: grid;
+    grid-auto-columns: 280px;
+    justify-content: center;
   }
 
   .form_content-container {
-    width: 280px;
-    margin: 0 auto;
-  }
-
-  .form_background {
-    img {
-      position: absolute;
-      width: 100%;
-      z-index: -1;
-      max-height: 867px;
-      top: 0;
-      right: 0;
-      left: 0;
-      margin: 0 auto;
-    }
+    display: grid;
   }
 
   .form_head_text {
     width: 280px;
-    margin: 0 auto;
+    margin: 0 auto 31px;
     color: #FF834E;
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
@@ -842,19 +861,55 @@ html {
 
   .form_bonus_text {
     width: 280px;
-    margin: 0 auto;
+    margin: 0 auto 29px;
+    border: 2px solid #FF834E;
+    padding: 19px 0 22px 11px;
 
     ul {
       margin: 0;
       padding: 0;
       list-style: none;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 15.85px;
+
+      > :first-child {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 16px;
+      }
+
+      > :not(:first-child :last-child) {
+        margin-bottom: 9px;
+      }
 
       li {
-        span {
-          height: 1px;
-          width: 9px;
-          background-color: white;
+        position: relative;
+        margin-left: 14px;
 
+        :nth-child(1) {
+          position: absolute;
+          background-color: $text_color;
+          top: 0;
+          bottom: 0;
+          margin: auto 0;
+          left: -14px;
+          width: 9px;
+          height: 1px;
+        }
+
+        :nth-child(2) {
+          position: absolute;
+          background-color: $text_color;
+          width: 9px;
+          height: 1px;
+          top: 0;
+          left: -14px;
+          bottom: 0;
+          margin: auto 0;
+          transform: rotate(-90deg);
         }
       }
     }
@@ -863,6 +918,11 @@ html {
 
   .directly_form_head_text {
     width: 270px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    margin-bottom: 57px;
   }
 
   .directly_form {
@@ -872,12 +932,17 @@ html {
     border-radius: 2px;
     margin: 0 auto;
 
+    > :not(:last-child) {
+      margin-bottom: 15px;
+    }
+
     input {
       padding-left: 13px;
       font-family: "Montserrat", sans-serif;
       font-weight: 400;
       font-size: 14px;
       line-height: 17px;
+      border: none;
     }
 
     textarea {
@@ -886,7 +951,8 @@ html {
       font-size: 14px;
       line-height: 17px;
       padding-left: 13px;
-
+      resize: none;
+      border: none;
     }
 
 
@@ -898,7 +964,6 @@ html {
     .form_about {
       min-height: 80px;
       width: 100%;
-      margin-bottom: 12.62px;
     }
 
     .form_checkbox {
@@ -931,11 +996,29 @@ html {
           position: absolute;
           top: 0;
           left: 0;
+          z-index: 1;
         }
+      }
+
+      .checkbox:checked + .checkbox_label::before {
+        content: url("../src/img/Body/Form/formMark.svg");
+
       }
 
     }
 
+    .form_submit {
+      width: 100%;
+      height: 45px;
+      background: rgb(255, 131, 78);
+      background: linear-gradient(340deg, rgba(255, 131, 78, 1) 58%, rgba(255, 255, 255, 0.8629201680672269) 100%);
+      border: none;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 17px;
+      color: #FFFFFF;
+    }
   }
 
 }
@@ -956,6 +1039,7 @@ html {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin: 0 auto;
   margin: 0 auto;
 }
 
@@ -1271,47 +1355,502 @@ html {
       margin: 0 0 0 auto;
     }
   }
+
+  .form {
+    position: relative;
+    padding: 0;
+    background-image: url("../src/img/Body/Form/fancycraveDesktop.png");
+    background-size: 100% 1060px;
+
+    .form-container {
+      height: 840px;
+      margin: 0 auto;
+      padding-top: 210px;
+      z-index: 0;
+      display: grid;
+      grid-auto-columns: 1100px;
+      justify-content: center;
+    }
+
+    .form_content-container {
+      display: grid;
+      grid-template-rows: 52px 159px 223px;
+      grid-template-columns: 760px 350px;
+      grid-template-areas: "application form" "head_text form" "bonus_text form";
+
+
+      .form_head_text {
+        grid-area: head_text;
+        width: auto;
+        margin: 0;
+        color: #FF834E;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 41px;
+        line-height: 50px;
+      }
+
+      .form_bonus_text {
+        grid-area: bonus_text;
+        width: 635px;
+        margin: 0;
+        padding: 54px 54px 52.25px 49px;
+
+        ul {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 300;
+          font-size: 16px;
+          line-height: 19.5px;
+
+          > :first-child {
+            font-weight: 500;
+            font-size: 25px;
+            line-height: 30.5px;
+            margin-bottom: 15px;
+          }
+
+          > :not(:first-child :last-child) {
+            margin-bottom: 4.5px;
+          }
+
+          li {
+            span {
+              height: 1px;
+              width: 9px;
+              background-color: white;
+
+            }
+          }
+        }
+
+      }
+
+      .directly_form_head_text {
+        width: 100%;
+        grid-area: application;
+        font-size: 18px;
+        line-height: 22px;
+      }
+
+      .directly_form {
+        color: #595959;
+        grid-area: form;
+        width: 350px;
+        padding: 15px 10px;
+        max-height: 434px;
+        background: #FFF; /* Цвет фона */
+        border-radius: 2px;
+        margin: 0 auto;
+
+        input {
+          padding-left: 13px;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 17px;
+          border: 1px solid #D0D0D0;
+          background-color: rgba(#D0D0D0, 0.4);
+        }
+
+        textarea {
+          font-family: "Montserrat", sans-serif;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 17px;
+          padding-left: 13px;
+          border: 1px solid #D0D0D0;
+          background-color: rgba(#D0D0D0, 0.4);
+        }
+
+
+        .default_form {
+          height: 45px;
+          width: 100%;
+        }
+
+        .form_about {
+          min-height: 80px;
+          width: 100%;
+          margin-bottom: 12.62px;
+        }
+
+        .form_checkbox {
+
+          display: flex;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 400;
+          font-size: 10px;
+          line-height: 12px;
+          position: relative;
+          margin-bottom: 15px;
+
+          .checkbox {
+            display: none;
+          }
+
+          .checkbox_label {
+            padding-left: 36px;
+
+            &:before {
+              content: "";
+              //content: url("../src/img/Body/Form/formMark.svg");
+
+              display: flex;
+              width: 22px;
+              height: 22px;
+              border: 1px solid #D0D0D0;
+              border-radius: 2px;
+              align-items: center;
+              justify-content: center;
+              position: absolute;
+              top: 0;
+              left: 0;
+              z-index: 1;
+            }
+          }
+
+          .checkbox:checked + .checkbox_label::before {
+            content: url("../src/img/Body/Form/formMark.svg");
+
+          }
+
+        }
+
+        .form_submit {
+          width: 100%;
+          height: 45px;
+          background: rgb(255, 131, 78);
+          border: none;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 17px;
+          color: #FFFFFF;
+          box-shadow: 0 6px 4px -4px rgba(0, 0, 0, .2);
+
+        }
+
+      }
+
+    }
+
+
+  }
+
+
 }
 
 
 @media (min-width: 1920px) {
   .header {
-
-  }
-  .header_content-container {
-
-  }
-  .header_contacts-container {
-    display: flex;
-    align-items: center;
-
-    .order-a-call {
-      display: flex;
-      color: #FF834E;
-      align-items: center;
+    .header_content-container {
 
     }
 
-    .phone {
-      width: 166px;
-      height: 47px;
+    .header_contacts-container {
       display: flex;
       align-items: center;
-      justify-content: center;
 
-      a {
-        text-decoration: none;
+      .order-a-call {
+        display: flex;
+        color: #FF834E;
+        align-items: center;
+
+      }
+
+      .phone {
+        width: 166px;
+        height: 47px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        a {
+          text-decoration: none;
+        }
       }
     }
-  }
-  .header__items-container {
-    margin: 0;
-    padding: 0;
 
-    ul {
-      list-style-type: none;
+    .header__items-container {
+      margin: 0;
+      padding: 0;
+
+      ul {
+        list-style-type: none;
+        display: flex;
+        margin: 0 0 0 auto;
+      }
+    }
+
+  }
+
+
+  .cases {
+    background-image: url("../src/img/Body/Cases/DesktopBG.png");
+    background-size: 100% 100%;
+
+    .cases-container {
+      position: relative;
+      margin: 0 auto;
+      z-index: 0;
+
+      hr {
+        margin: 40px auto 0;
+        padding: 0;
+        border: none;
+        width: 200px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    .our_cases_text-container {
+      width: 100%;
+      text-align: center;
+      font-size: 42px;
+      line-height: 51.2px;
+      margin-bottom: 120px;
+
+      .our_cases_text {
+        display: none;
+
+      }
+
+      .our_cases_text__desktop {
+        display: block;
+      }
+    }
+
+    .cases_items-container {
+      width: 100%;
       display: flex;
-      margin: 0 0 0 auto;
+      justify-content: center;
+
+      :not(:first-child :last-child) {
+        margin-right: 20px;
+      }
+    }
+
+    .cases_item {
+      margin: 0;
+      background: rgba(20, 20, 20, 0.6);
+      backdrop-filter: blur(25.4563px);
+      width: 328px;
+      height: 500px;
+      padding: 17px;
+      border-radius: 4px;
+      margin-bottom: 40px;
+    }
+
+
+    .cases_item_image {
+      margin: 0 auto;
+      padding: 0;
+      margin-bottom: 20px;
+
+      :first-child {
+        display: none;
+      }
+
+      :last-child {
+        display: block;
+        width: 288px;
+        margin: 0 auto;
+      }
+    }
+
+
+    .cases_item_text-container {
+      .head_text {
+        font-family: "Roboto", sans-serif;
+        font-weight: 500;
+        line-height: 25px;
+        font-size: 22px;
+        margin-bottom: 8.5px;
+      }
+
+      .bottom_text {
+        font-family: "Roboto", sans-serif;
+        font-weight: 300;
+        line-height: 18px;
+        font-size: 15px;
+        opacity: 0.8;
+
+      }
+
+    }
+
+    .cases_application {
+      width: 990px;
+      height: 65px;
+      background-color: #50386F;
+      padding: 0;
+      border-radius: 0;
+      display: grid;
+      grid-template-columns: auto 240px;
+
+      .application-head_text-container {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        width: 100%;
+
+
+      }
+
+      .application_image {
+        display: none;
+        margin: 0;
+      }
+
+      .application_text {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        margin-left: 30px;
+        width: 100%;
+      }
+
+      .application_button {
+        background-color: #8D5DCC;
+        width: 240px;
+        height: 100%;
+        border: none;
+        margin: 0 auto;
+        border-radius: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+      }
+
+      .application_button_text {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        display: flex;
+        >:first-child{
+          margin-right: 15px;
+        }
+        svg {
+          height: 15px;
+          margin: 0 auto;
+          vertical-align: middle;
+        }
+      }
+
     }
   }
+
+
+  .clients {
+    position: relative;
+    padding-top: 122px;
+    height: 1061px;
+    background-image: url("../src/img/Body/Clients/Clients_desktopBG.png");
+    background-size: 100% 100%;
+
+    .clients-container {
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+
+    }
+
+    .head_text {
+      text-align: center;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 400;
+      font-size: 42px;
+      line-height: 51.2px;
+      margin-bottom: 210px;
+    }
+
+    .clients_image_group {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 90px;
+
+      :not(:last-child) {
+        margin-right: 100px;
+      }
+
+      .clients_image {
+        display: flex;
+        position: relative;
+
+        > :first-child {
+          display: flex;
+          width: 317px;
+          height: 317px;
+          z-index: 1;
+        }
+
+        > :last-child {
+          position: absolute;
+          top: -100px;
+          right: -36px;
+          display: flex;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 190px;
+          line-height: 317px;
+          color: rgba(#FFF, 0.1);
+          z-index: 0;
+        }
+
+        &__active {
+          position: relative;
+
+          > :first-child {
+            display: flex;
+            width: 317px;
+            height: 317px;
+            z-index: 1;
+          }
+
+          > :last-child {
+            position: absolute;
+            top: -100px;
+            right: -36px;
+            display: flex;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 700;
+            font-size: 190px;
+            line-height: 317px;
+            color: #FF834E;
+            z-index: 0;
+          }
+        }
+
+      }
+    }
+
+    .switches_container {
+      width: 208px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+
+
+      .switch {
+        svg {
+          width: 74px;
+          height: 74px;
+        }
+
+      }
+
+    }
+
+
+  }
+
+
 }

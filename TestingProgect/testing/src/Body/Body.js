@@ -17,13 +17,18 @@ import CasesOne from "../img/Body/Cases/CasesOne.png"
 import CasesTwo from "../img/Body/Cases/CasesTwopng.png"
 import CasesTHREE from "../img/Body/Cases/CasesTHREE.png"
 import CasesFour from "../img/Body/Cases/CasesFour.png"
+import CasesOneDesktop from "../img/Body/Cases/CasesOneDesktop.png"
+import CasesTwoDesktop from "../img/Body/Cases/CasesTwoDesktop.jpg"
+import CasesTHREEDesktop from "../img/Body/Cases/CasesTHReeDesktop.png"
+import CasesFourDesktop from "../img/Body/Cases/CasesFourDesktop.png"
 import LoveSvg from "../img/Body/Cases/LoveSvg";
 import SwitchesSvg from "../img/Body/Clients/SwitchesSvg";
 import FirstClients from "../img/Body/Clients/FirstClient.png"
 import SecondClients from "../img/Body/Clients/SecondClients.png"
 import ThirdClients from "../img/Body/Clients/ThirdClient.png"
 import FourthClients from "../img/Body/Clients/FourthClient.png"
-import FormBackground from "../img/Body/Form/fancycrave-277756-unsplash.png"
+import Captcha from "../img/Body/Form/Captcha.1.png"
+
 
 const Body = () => {
 
@@ -37,18 +42,20 @@ const Body = () => {
             e.currentTarget.children[3].className = "rolling-out-text"
         }
     }
-    const [switchElem, setSwitchElem] = useState(1)
+    const [switchElem, setSwitchElem] = useState(0)
     const switchNext = () => {
         if (switchElem <= document.querySelectorAll('.clients_image').length + 1) {
-            switchElem === 3 ? setSwitchElem(0)
+            switchElem === 2 ? setSwitchElem(-1)
                 : setSwitchElem(switchElem + 1)
             let switchesClientsClassActive = document.querySelectorAll('.clients_image__active')
             switchesClientsClassActive[0].className = "clients_image"
             let switchesClientsClass = document.querySelectorAll('.clients_image')
-            switchesClientsClass[switchElem].className = "clients_image__active";
+            switchesClientsClass[switchElem + 1].className = "clients_image__active";
         }
     }
     const switchPrev = () => {
+
+
         if (switchElem >= 0) {
             switchElem === 0 ? setSwitchElem(document.querySelectorAll('.clients_image').length)
                 : setSwitchElem(switchElem - 1)
@@ -236,17 +243,19 @@ const Body = () => {
                 {/*------------*/}
                 <div className="cases">
                     <div className="cases-container">
-                        <div className="cases__background">
-                            <img src={CasesBackground} alt=""/>
-                        </div>
-
-                        <div className="cases_items-container">
+                        <div className="our_cases_text-container">
                             <div className="our_cases_text">
                                 НАШИ КЕЙСЫ
                             </div>
+                            <div className="our_cases_text__desktop">
+                                КЕЙСЫ ГОВОРЯТ ЗА СЕБЯ
+                            </div>
+                        </div>
+                        <div className="cases_items-container">
                             <div className="cases_item">
                                 <div className="cases_item_image">
                                     <img src={CasesOne} alt=""/>
+                                    <img src={CasesOneDesktop} alt=""/>
                                 </div>
                                 <div className="cases_item_text-container">
                                     <div className="head_text">
@@ -260,6 +269,7 @@ const Body = () => {
                             <div className="cases_item">
                                 <div className="cases_item_image">
                                     <img src={CasesTwo} alt=""/>
+                                    <img src={CasesTwoDesktop} alt=""/>
                                 </div>
                                 <div className="cases_item_text-container">
                                     <div className="head_text">
@@ -273,6 +283,7 @@ const Body = () => {
                             <div className="cases_item">
                                 <div className="cases_item_image">
                                     <img src={CasesTHREE} alt=""/>
+                                    <img src={CasesTHREEDesktop} alt=""/>
                                 </div>
                                 <div className="cases_item_text-container">
                                     <div className="head_text">
@@ -286,6 +297,7 @@ const Body = () => {
                             <div className="cases_item">
                                 <div className="cases_item_image">
                                     <img src={CasesFour} alt=""/>
+                                    <img src={CasesFourDesktop} alt=""/>
                                 </div>
                                 <div className="cases_item_text-container">
                                     <div className="head_text">
@@ -296,23 +308,26 @@ const Body = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="cases_application">
-                                <div className="application-head_text-container">
-                                    <div className="application_image">
-                                        <LoveSvg/>
-                                    </div>
-                                    <div className="application_text">
-                                        Оставьте свою заявку, чтобы получить БЕСПЛАТНУЮ консултацию!
-                                    </div>
+                        </div>
+                        <div className="cases_application">
+                            <div className="application-head_text-container">
+                                <div className="application_image">
+                                    <LoveSvg/>
                                 </div>
-                                <div className="application_button">
-                                    <div className="application_button_text">
+                                <div className="application_text">
+                                    Оставьте свою заявку, чтобы получить БЕСПЛАТНУЮ консультацию!
+                                </div>
+                            </div>
+                            <div className="application_button">
+                                <div className="application_button_text">
+                                    <div>
                                         Оставить заявку
                                     </div>
+                                    <div>
+                                        <UnionSvg/>
+                                    </div>
                                 </div>
-
                             </div>
-
                         </div>
                         <hr/>
                     </div>
@@ -326,15 +341,27 @@ const Body = () => {
                         <div className="clients_image_group">
                             <div className="clients_image__active">
                                 <img src={FirstClients} alt=""/>
+                                <div className="image_number">
+                                    01
+                                </div>
                             </div>
                             <div className="clients_image">
                                 <img src={SecondClients} alt=""/>
+                                <div className="image_number">
+                                    02
+                                </div>
                             </div>
                             <div className="clients_image">
                                 <img src={ThirdClients} alt=""/>
+                                <div className="image_number">
+                                    03
+                                </div>
                             </div>
                             <div className="clients_image">
                                 <img src={FourthClients} alt=""/>
+                                <div className="image_number">
+                                    04
+                                </div>
                             </div>
                         </div>
                         <div className="switches_container">
@@ -349,21 +376,20 @@ const Body = () => {
                 </div>
                 {/*------------*/}
                 <div className="form">
+
                     <div className="form-container">
-                        <div className="form_background">
-                            <img src={FormBackground} alt=""/>
-                        </div>
                         <div className="form_content-container">
                             <div className="form_head_text">
                                 Интернет-магазин, который приносит прибыль
                             </div>
                             <div className="form_bonus_text">
                                 <ul>
-                                    <li><span></span> Получите бесплатно</li>
-                                    <li><span/><span/>Личная косультация</li>
-                                    <li><span/><span/>Стратегия запуска и продвижения</li>
-                                    <li><span/><span/>Коммерческое предложение</li>
+                                    <li><span></span><span></span>Получите бесплатно</li>
+                                    <li><span></span><span></span>Личная косультация</li>
+                                    <li><span></span><span></span>Стратегия запуска и продвижения</li>
+                                    <li><span></span><span></span>Коммерческое предложение</li>
                                 </ul>
+
                             </div>
                             <div className="directly_form_head_text">
                                 Оставьте заявку, чтобы узнать, как создать свой Интернет-магазин
@@ -374,19 +400,18 @@ const Body = () => {
                                 <input className="default_form" type="text" placeholder={"+7 (000) 000-00-00"}/>
 
                                 <textarea className="form_about" type="text"
-                                       placeholder={"Расскажите о своей задаче"}/>
+                                          placeholder={"Расскажите о своей задаче"}/>
 
                                 <div className="form_checkbox">
-                                    <div>
-                                        <input type="checkbox" className="checkbox" id="cb1" placeholder={"qweqwe"}/>
-                                    </div>
+                                    <input type="checkbox" className="checkbox" id="cb1" placeholder={"qweqwe"}/>
                                     <label className="checkbox_label" htmlFor="cb1">
                                         Нажимая на кнопку "Отправить", я даю
                                         согласие на обработку
                                         персональных данных.
                                     </label>
                                 </div>
-                                <input className="checkbox_label" type="checkbox" />
+                                <img src={Captcha} alt=""/>
+                                <button className="form_submit">Отправить</button>
                             </div>
                         </div>
                     </div>
