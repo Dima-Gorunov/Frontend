@@ -585,7 +585,6 @@ body {
 
 .features {
   padding-bottom: 120px;
-
   background-image: url("../src/img/Body/Features/Blume BG.png");
   background-size: 100% 100%;
 
@@ -653,6 +652,9 @@ body {
       opacity: 10%;
     }
 
+  }
+  .features_navigation{
+    display: none;
   }
 }
 
@@ -1056,6 +1058,7 @@ body {
       line-height: 17px;
       color: #FFFFFF;
     }
+
   }
 
 }
@@ -1574,9 +1577,7 @@ body {
 
     }
 
-
   }
-
 
 }
 

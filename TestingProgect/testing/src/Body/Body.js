@@ -17,7 +17,6 @@ import FeatThree from "../img/Body/Features/Feat_3.png"
 import FeatThreeDesktop from "../img/Body/Features/_FeatThreeDesktop.png"
 import phoneDesktop from "../img/Body/Features/phoneDesktop.png"
 import Logos from "../img/Body/Features/Logos.png"
-
 import CasesOne from "../img/Body/Cases/CasesOne.png"
 import CasesTwo from "../img/Body/Cases/CasesTwopng.png"
 import CasesTHREE from "../img/Body/Cases/CasesTHREE.png"
@@ -43,8 +42,8 @@ import UnderLine from "../img/Body/Cases/UnderLine.png"
 const Body = () => {
 
     const setClassActive = (e) => {
-        console.log(e.currentTarget.children[2].className);
-        if (e.currentTarget.children[2].className === "right-arrow") {
+        console.log(e.currentTarget.children[0].className);
+       if (e.currentTarget.children[2].className === "right-arrow") {
             e.currentTarget.children[2].className = "right-arrow__active"
             e.currentTarget.children[3].className = "rolling-out-text__active"
         } else {
