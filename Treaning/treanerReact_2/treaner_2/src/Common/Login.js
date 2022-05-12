@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from "react-redux";
-import {compose} from "redux";
 import {Field, Form, Formik} from "formik";
-import {maxLength} from "../Utils/Validators";
 import {loginThunk} from "../Reducers/AuthReducer";
 
 const LoginForm = (props) => {
+    useEffect(()=>{
 
+    },[])
     const submit = (value) => {
         console.log(value);
         props.loginThunk(value.email, value.password)

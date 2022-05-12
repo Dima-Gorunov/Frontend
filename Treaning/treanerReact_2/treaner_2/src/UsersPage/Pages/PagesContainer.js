@@ -1,7 +1,6 @@
 import React, {useMemo} from 'react';
 import Pages from "./Pages";
 import {connect} from "react-redux";
-import {getUsers} from "../../Api/Api";
 import {getUsersThunk, setCurrentPage, setPagesCount, setUsers, toggleStatus} from "../../Reducers/UsersReducer";
 
 

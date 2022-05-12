@@ -62,35 +62,35 @@ let UsersReducer = (state = initialState, action) => {
             }
         }
 
-        case FOLLOW:{
+        case FOLLOW: {
             return {
                 ...state,
-                Users: [ ...state.Users.map(e=>{
-                    if (action.userId===e.id){
+                Users: [...state.Users.map(e => {
+                    if (action.userId === e.id) {
                         return {
                             ...e,
-                            followed:true
+                            followed: true
                         }
                     }
 
-                    return{
+                    return {
                         ...e
                     }
                 })]
             }
         }
-        case UNFOLLOW:{
+        case UNFOLLOW: {
             return {
                 ...state,
-                Users: [ ...state.Users.map(e=>{
-                    if (action.userId===e.id){
+                Users: [...state.Users.map(e => {
+                    if (action.userId === e.id) {
                         return {
                             ...e,
-                            followed:false
+                            followed: false
                         }
                     }
 
-                    return{
+                    return {
                         ...e
                     }
                 })]
@@ -169,9 +169,9 @@ export const unFollowThunk = (userId) => {
     }
 }
 
-export const setPageSizeThunk=(size)=>{
-    return async dispatch=>{
-        dispatch(getUsersThunk(1,size))
+export const setPageSizeThunk = (size) => {
+    return async dispatch => {
+        dispatch(getUsersThunk(1, size))
     }
 }
 

@@ -29,4 +29,5 @@ export default compose(
     connect(mapStateToProps, {
         changeInput, getUserData
     }),
-    WithAuthRedirect)(NewsContainer);
+    WithAuthRedirect
+)(NewsContainer);

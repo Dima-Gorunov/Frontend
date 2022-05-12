@@ -6,7 +6,7 @@ import PagesContainer from "./Pages/PagesContainer";
 
 const Users = ({setPageSizeThunk, Users, followingInProgress, followUnFollowThunk}) => {
     console.log('render')
-    const [pagqeSize, setPageSize] = useState(0)
+    const [pageSize, setPageSize] = useState(0)
     return (
         <div>
             <div>

@@ -14,15 +14,15 @@ import {
     getCurrentPageSel,
     getFollowProgress,
     getLoadingProcess,
-    getPageSizeSel, getUsersSel, getUsersSuperSelector
+    getPageSizeSel, getUsersSel,
 } from "../Selector's/UsersSelector's";
 import * as react from "react";
 
-const UsersContainer = (props) => {
+const UsersContainer = ({getUsersThunk, CurrentPage, PageSize, Loading, ...props}) => {
     useEffect(() => {
-        props.getUsersThunk(props.CurrentPage, props.PageSize);
+        getUsersThunk(CurrentPage, PageSize);
     }, [])
-    return props.Loading ? <Preloader/> : <Users {...props}/>
+    return Loading ? <Preloader/> : <Users {...props}/>
 }
 
 let mapStateToProps = (state) => {
@@ -40,10 +40,8 @@ let mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps, {
         followUnFollowThunk,
-        authMeThunk,
         getUsersThunk,
         filterUsers,
         setPageSizeThunk
-    }),
-    WithAuthRedirect
+    })
 )(UsersContainer)

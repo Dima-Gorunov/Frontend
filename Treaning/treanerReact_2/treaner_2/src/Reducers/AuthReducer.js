@@ -54,7 +54,6 @@ export const getUserData = () => {
                         dispatch(setUserData(email, id, login, true))
                     } else if (data.resultCode !== 0) {
                         dispatch(setUserData(null, null, null, false))
-
                     }//    Some dispatch(action(element))
                 }
             )
