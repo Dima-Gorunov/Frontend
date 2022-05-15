@@ -72,7 +72,6 @@ let UsersReducer = (state = initialState, action) => {
                             followed: true
                         }
                     }
-
                     return {
                         ...e
                     }

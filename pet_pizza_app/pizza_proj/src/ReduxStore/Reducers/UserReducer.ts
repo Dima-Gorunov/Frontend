@@ -1,28 +1,26 @@
 import exp from "constants";
 
-enum UserActionTypes {
-    FETCH_USERS = "FETCH_USERS",
-    FETCH_USERS_SUCCESS = "FETCH_USERS_SUCCESS",
-    FETCH_USERS_ERROR = "FETCH_USERS_ERROR",
-}
+const FETCH_USERS = "FETCH_USERS"
+const FETCH_USERS_SUCCESS = "FETCH_USERS_SUCCESS"
+const FETCH_USERS_ERROR = "FETCH_USERS_ERROR"
 
-interface UsersState {
+export interface UsersState {
     Users: any[],
     loading: boolean,
     error: null | string
 }
 
-interface FetchUserAction {
-    type: UserActionTypes.FETCH_USERS
+type FetchUserAction = {
+    type: typeof FETCH_USERS
 }
 
-interface FetchUserSuccessAction {
-    type: UserActionTypes.FETCH_USERS_SUCCESS,
+type FetchUserSuccessAction = {
+    type: typeof FETCH_USERS_SUCCESS,
     payload: any[]
 }
 
-interface FetchUserErrorAction {
-    type: UserActionTypes.FETCH_USERS_ERROR,
+type FetchUserErrorAction = {
+    type: typeof FETCH_USERS_ERROR,
     payload: string
 }
 
@@ -37,15 +35,16 @@ const initialState: UsersState = {
 
 const UserReducer = (state = initialState, action: UserAction): UsersState => {
     switch (action.type) {
-        case UserActionTypes.FETCH_USERS: {
+        case FETCH_USERS: {
             return {...state, loading: true}
         }
-        case UserActionTypes.FETCH_USERS_SUCCESS: {
+        case FETCH_USERS_SUCCESS: {
             return {...state, loading: false, Users: action.payload}
         }
-        case UserActionTypes.FETCH_USERS_ERROR: {
+        case FETCH_USERS_ERROR: {
             return {...state, error: action.payload}
         }
+
 
         default: {
             return state

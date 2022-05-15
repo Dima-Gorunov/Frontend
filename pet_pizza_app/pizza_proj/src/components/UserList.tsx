@@ -1,9 +1,16 @@
 import React from 'react';
 
-const UserList: React.FC = () => {
+const UserList: React.FC = ({Users}: any) => {
     return (
         <div>
-            hear will be Users
+            {Users
+                ? Users.map((e: string) => (
+                    <div>
+                        {e}
+                    </div>
+                ))
+                :"qweqwqwqq"
+            }
         </div>
     );
 };
