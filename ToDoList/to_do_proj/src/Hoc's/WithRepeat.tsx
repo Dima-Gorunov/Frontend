@@ -4,12 +4,13 @@ import {connect} from "react-redux";
 
 const WithRepeat: React.FC = (Component: any) => {
 
-    return <Component/>
+    return <Component  />
 
 };
 
 let mapStateToProps = (state: any) => {
-    return {}
+    return {
+    }
 }
 
 export default connect(mapStateToProps, {})(WithRepeat);

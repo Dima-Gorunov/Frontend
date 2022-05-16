@@ -6,18 +6,21 @@ const DELETE_NOTE = "DELETE_NOTE"
 const PUSH_ID = "PUSH_ID"
 const SORT_ARR = "SORT_ARR"
 const SORT_ARR_ID = "SORT_ARR_ID"
-
+const SET_TEXT_ARRAY = "SET_TEXT_ARRAY"
+const CHECK_DUPLICATE = "CHECK_DUPLICATE"
 type Notes = {
     Id: number,
-    Text: string | null,
+    Text: string,
     Done: boolean,
 }[]
 
 let initialState = {
     DefText: "Создайте заметку",
-    InputValue: "gg",
+    InputValue: "",
     Notes: null as Notes | null,
-    IdArray: null as number[] | null
+    IdArray: null as number[] | null,
+    Duplicate: false,
+    TextArray: [""]
 }
 export type InitialStateType = typeof initialState
 
@@ -67,6 +70,19 @@ let AppReducer = (state = initialState, action: any): InitialStateType => {
             }
         }
 
+        case SET_TEXT_ARRAY: {
+            return {
+                ...state,
+                TextArray: state.Notes ? state.Notes.map(e => e.Text.toLowerCase()) : [""]
+            }
+        }
+        case CHECK_DUPLICATE: {
+            return {
+                ...state,
+                Duplicate: state.TextArray.some(e => e == state.InputValue.toLowerCase() && e !== "")
+            }
+        }
+
         case PUSH_ID: {
             return {
                 ...state,
@@ -86,23 +102,28 @@ export const addNotesThunk = () => {
         dispatch(sortNodes())
         dispatch(pushId())
         dispatch(sortArr())
+        dispatch(changeInput(""))
+        dispatch(setTextArray())
     }
 }
 
-export const deleteNoteThunk = (payload:any) => {
+export const deleteNoteThunk = (payload: any) => {
     return (dispatch: any) => {
         dispatch(deleteNote(payload))
         dispatch(sortNodes())
         dispatch(pushId())
         dispatch(sortArr())
+        dispatch(setTextArray())
     }
 }
 
 
 export const changeInput = (payload: string) => ({type: CHANGE_INPUT, payload})
 export const addNotes = () => ({type: ADD_NOTES})
-const deleteNote = (payload: number) => ({type: DELETE_NOTE, payload})
 export const sortNodes = () => ({type: SORT_ARR})
+const setTextArray = () => ({type: SET_TEXT_ARRAY})
+export const checkDuplicate = () => ({type: CHECK_DUPLICATE})
+const deleteNote = (payload: number) => ({type: DELETE_NOTE, payload})
 const sortArr = () => ({type: SORT_ARR_ID})
 const pushId = () => ({type: PUSH_ID})
 export default AppReducer

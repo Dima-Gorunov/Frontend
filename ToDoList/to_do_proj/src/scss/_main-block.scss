@@ -1,0 +1,182 @@
+@import "variables";
+
+$white: #fff;
+$gray: #9b9b9b;
+
+.main-block {
+  position: relative;
+  color: white;
+  background-color: $background_1;
+  width: 360px;
+  height: 75vh;
+  border-radius: 15px;
+  padding: 25px;
+}
+
+.notes {
+  overflow: auto;
+  max-height: 45vh;
+  ::-webkit-scrollbar{
+    position: absolute;
+    top: 0;
+  }
+
+
+  .notes_text-container {
+    font-size: 20px;
+    min-height: 48px;
+    max-width: 310px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    div {
+
+    }
+
+    .note_number {
+
+    }
+
+    .note_text {
+      max-width: 250px;
+      word-break: break-all
+    }
+
+    .del_note {
+      position: relative;
+      width: 25px;
+      height: 25px;
+
+      span {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+      }
+
+      :hover {
+        cursor: pointer;
+      }
+
+      :before {
+        position: absolute;
+        transform: rotate(45deg);
+        content: '';
+        height: 3px;
+        width: 100%;
+        top: 50%;
+        background: #515758;
+      }
+
+      :after {
+        position: absolute;
+        transform: rotate(-45deg);
+        content: '';
+        height: 3px;
+        top: 50%;
+        width: 100%;
+        background: #515758;
+      }
+    }
+
+
+  }
+}
+
+.error-message {
+  position: absolute;
+  font-weight: 700;
+  font-size: 20px;
+  color: $gray;
+  top: 5px;
+  color: darkred;
+}
+
+.hr-shelf {
+  padding: 0;
+  border: none;
+  border-bottom: 2px solid #ffffff;
+  box-shadow: 0 20px 20px -20px #333;
+
+}
+
+.note_button {
+  width: 90px;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  border: #9b9b9b 2px solid;
+  color: #9b9b9b;
+  background-color: $background_1;
+  padding: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 20px auto;
+  transition: .5s;
+}
+
+.note_button:hover {
+  top: 5px;
+  transition: .2s;
+  border-radius: 10px;
+}
+
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid $gray;
+  outline: 0;
+  color: $white;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ .form__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  color: $gray;
+}
+
+.form__field:focus {
+  ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-weight: 700;
+  }
+
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+}
+
+/* reset input */
+.form__field {
+  &:required, &:invalid {
+    box-shadow: none;
+  }
+}

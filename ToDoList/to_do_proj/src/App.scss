@@ -1,9 +1,29 @@
-
+@import "scss/variables";
+@import "scss/All";
 * {
   box-sizing: border-box;
+  ::-webkit-scrollbar {
+    width: 12px;               /* ширина scrollbar */
+    position: absolute;
+  }
+  ::-webkit-scrollbar-track {
+    background: $background_1;        /* цвет дорожки */
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: gray;    /* цвет плашки */
+    border-radius: 20px;       /* закругления плашки */
+    border: 3px solid $background_1;  /* padding вокруг плашки */
+  }
+  
 }
+
 
 
 .App {
-  text-align: center;
+  padding-top: 10vh;
+  background-color: $background;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
 }
+
