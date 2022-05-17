@@ -3,24 +3,27 @@
 $white: #fff;
 $gray: #9b9b9b;
 
+
 .main-block {
   position: relative;
-  color: white;
-  background-color: $background_1;
+  color: var(--text-color);
+  background-color: var(--background-color-1);
   width: 360px;
   height: 75vh;
   border-radius: 15px;
   padding: 25px;
+  transition: .2s;
 }
+
 
 .notes {
   overflow: auto;
-  max-height: 45vh;
-  ::-webkit-scrollbar{
+  max-height: 55%;
+
+  ::-webkit-scrollbar {
     position: absolute;
     top: 0;
   }
-
 
   .notes_text-container {
     font-size: 20px;
@@ -40,7 +43,7 @@ $gray: #9b9b9b;
 
     .note_text {
       max-width: 250px;
-      word-break: break-all
+      word-wrap: break-word;
     }
 
     .del_note {
@@ -61,21 +64,23 @@ $gray: #9b9b9b;
       :before {
         position: absolute;
         transform: rotate(45deg);
+        transition: .2s;
         content: '';
         height: 3px;
         width: 100%;
         top: 50%;
-        background: #515758;
+        background: var(--line-color);
       }
 
       :after {
         position: absolute;
         transform: rotate(-45deg);
+        transition: .2s;
         content: '';
         height: 3px;
         top: 50%;
         width: 100%;
-        background: #515758;
+        background: var(--line-color);
       }
     }
 
@@ -83,21 +88,35 @@ $gray: #9b9b9b;
   }
 }
 
-.error-message {
-  position: absolute;
-  font-weight: 700;
-  font-size: 20px;
-  color: $gray;
-  top: 5px;
-  color: darkred;
+.main_form {
+  .submit_button-container {
+    position: relative;
+  }
 }
 
+.recycle-svg {
+  position: absolute;
+  top: 0;
+  right: -20px;
+
+  svg {
+    :only-child {
+      fill: var(--line-color);
+      transition: .2s;
+    }
+  }
+}
+.recycle-svg:hover{
+  cursor: pointer;
+}
 .hr-shelf {
   padding: 0;
   border: none;
-  border-bottom: 2px solid #ffffff;
-  box-shadow: 0 20px 20px -20px #333;
-
+  margin: 0 0 10px 0;
+  opacity: 1;
+  background-color: var(--line-color);
+  border-bottom: 2px solid var(--line-color);
+  transition: .2s;
 }
 
 .note_button {
@@ -107,18 +126,28 @@ $gray: #9b9b9b;
   text-decoration: none;
   font-weight: 700;
   font-size: 1rem;
-  border: #9b9b9b 2px solid;
-  color: #9b9b9b;
-  background-color: $background_1;
+  border: var(--line-color) 2px solid;
+  color: var(--line-color);
+  background-color: var(--background-color-1);
   padding: 3px;
   padding-left: 5px;
   padding-right: 5px;
   margin: 20px auto;
-  transition: .5s;
+  transition: .2s;
+}
+
+.theme {
+  margin: 0 auto 30px;
+  width: 150px;
+  top: -70px;
+  right: 25px;
+}
+
+.theme:hover {
+  cursor: pointer;
 }
 
 .note_button:hover {
-  top: 5px;
   transition: .2s;
   border-radius: 10px;
 }
@@ -126,20 +155,29 @@ $gray: #9b9b9b;
 .form__group {
   position: relative;
   padding: 15px 0 0;
-  margin-top: 10px;
+  margin-top: 15px;
   width: 100%;
+
+  .error-message {
+    position: absolute;
+    font-weight: 700;
+    font-size: 20px;
+    top: -25px;
+    color: darkred;
+  }
+
 }
 
 .form__field {
   font-family: inherit;
   width: 100%;
   border: 0;
-  border-bottom: 2px solid $gray;
+  border-bottom: 2px solid var(--line-color);
   outline: 0;
-  color: $white;
+  color: var(--text-color);
   padding: 7px 0;
   background: transparent;
-  transition: border-color 0.2s;
+  transition: .2s;
 
   &::placeholder {
     color: transparent;
@@ -156,8 +194,8 @@ $gray: #9b9b9b;
   position: absolute;
   top: 0;
   display: block;
-  transition: 0.2s;
-  color: $gray;
+  transition: .2s;
+  color: var(--line-color);
 }
 
 .form__field:focus {

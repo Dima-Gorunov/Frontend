@@ -7,12 +7,12 @@
     position: absolute;
   }
   ::-webkit-scrollbar-track {
-    background: $background_1;        /* цвет дорожки */
+    background: var(--background-color-1);        /* цвет дорожки */
   }
   ::-webkit-scrollbar-thumb {
     background-color: gray;    /* цвет плашки */
     border-radius: 20px;       /* закругления плашки */
-    border: 3px solid $background_1;  /* padding вокруг плашки */
+    border: 3px solid var(--background-color-1);  /* padding вокруг плашки */
   }
   
 }
@@ -21,7 +21,7 @@
 
 .App {
   padding-top: 10vh;
-  background-color: $background;
+  background-color: var(--background-color);
   display: flex;
   justify-content: center;
   height: 100vh;

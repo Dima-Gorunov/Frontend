@@ -8,6 +8,7 @@ const SORT_ARR = "SORT_ARR"
 const SORT_ARR_ID = "SORT_ARR_ID"
 const SET_TEXT_ARRAY = "SET_TEXT_ARRAY"
 const CHECK_DUPLICATE = "CHECK_DUPLICATE"
+const DELETE_ALL_NOTES = "DELETE_ALL_NOTES"
 type Notes = {
     Id: number,
     Text: string,
@@ -69,7 +70,6 @@ let AppReducer = (state = initialState, action: any): InitialStateType => {
                     : null
             }
         }
-
         case SET_TEXT_ARRAY: {
             return {
                 ...state,
@@ -82,7 +82,12 @@ let AppReducer = (state = initialState, action: any): InitialStateType => {
                 Duplicate: state.TextArray.some(e => e == state.InputValue.toLowerCase() && e !== "")
             }
         }
-
+        case DELETE_ALL_NOTES: {
+            return {
+                ...state,
+                Notes: []
+            }
+        }
         case PUSH_ID: {
             return {
                 ...state,
@@ -121,9 +126,11 @@ export const deleteNoteThunk = (payload: any) => {
 export const changeInput = (payload: string) => ({type: CHANGE_INPUT, payload})
 export const addNotes = () => ({type: ADD_NOTES})
 export const sortNodes = () => ({type: SORT_ARR})
-const setTextArray = () => ({type: SET_TEXT_ARRAY})
 export const checkDuplicate = () => ({type: CHECK_DUPLICATE})
+export const deleteAllNotes = () => ({type: DELETE_ALL_NOTES})
+const setTextArray = () => ({type: SET_TEXT_ARRAY})
 const deleteNote = (payload: number) => ({type: DELETE_NOTE, payload})
 const sortArr = () => ({type: SORT_ARR_ID})
 const pushId = () => ({type: PUSH_ID})
+
 export default AppReducer

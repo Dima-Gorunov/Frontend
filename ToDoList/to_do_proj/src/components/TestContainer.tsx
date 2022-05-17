@@ -1,11 +1,10 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import Test from "./Test";
 import {
-    addNotes,
     addNotesThunk,
     changeInput,
-    checkDuplicate,
+    checkDuplicate, deleteAllNotes,
     deleteNoteThunk,
     sortNodes
 } from "../Redux/Reducers/AppReducer";
@@ -14,6 +13,7 @@ import {
 const TestContainer = (props:any) => {
     useEffect(() => {
     }, [])
+
     return (
         <Test {...props} />
     );
@@ -21,6 +21,7 @@ const TestContainer = (props:any) => {
 
 let mapStateToProps = (state: any) => {
     return {
+        theme:state.App.theme,
         DefText: state.App.DefText,
         InputValue: state.App.InputValue,
         Notes: state.App.Notes,
@@ -36,5 +37,6 @@ export default connect(mapStateToProps, {
     addNotesThunk,
     deleteNoteThunk,
     sortNodes,
-    checkDuplicate
+    checkDuplicate,
+    deleteAllNotes
 })(TestContainer);
