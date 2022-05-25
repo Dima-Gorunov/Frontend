@@ -1,0 +1,37 @@
+
+.users-page-container {
+  padding: 31px 61px;
+
+  .title-text {
+    margin-bottom: 16px;
+  }
+}
+
+.users-container {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
+.user_card-container {
+  min-width: 239px;
+  min-height: 143px;
+  border: #DADADA solid 1px;
+  margin-right: 13px;
+}
+
+.user_card-container:hover {
+  border: #000000 solid 1px;;
+}
+
+div::-webkit-scrollbar {
+  width: 12px;               /* ширина scrollbar */
+}
+div::-webkit-scrollbar-track-piece {
+  background: $background_light;        /* цвет дорожки */
+  border: 3px solid $background_dark
+}
+div::-webkit-scrollbar-thumb {
+  background-color: $background_dark;    /* цвет плашки */
+  /* padding вокруг плашки */
+}

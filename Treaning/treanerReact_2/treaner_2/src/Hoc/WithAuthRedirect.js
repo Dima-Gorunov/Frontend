@@ -14,8 +14,6 @@ const WithAuthRedirect = (Component) => {
     //                                                                   //..и потому что props в HOK не передать,..
     //                                                                  //..только если снаружи обарачивать в connect()()
     //                                                               //..но этим мы засорим другую контейнерную компоненту
-
-
     return connect(mapStateToPropsForRedirect)(RedirectComponent); // возвращаем нужный компонент-
     // -RedirectComponent с входными PROPSами
 }

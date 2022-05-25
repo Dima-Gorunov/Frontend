@@ -1,0 +1,1 @@
+export const getLoad = (state: any) => state.App.Loading

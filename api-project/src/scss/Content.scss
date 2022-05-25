@@ -1,0 +1,15 @@
+
+.content-container {
+  min-height: 1080px;
+
+  .custom-link {
+    color: $background_light;
+    background-color: $background_dark;
+  }
+}
+
+.title-text {
+  font-family: 'Alegreya Sans SC Medium', cursive;
+  font-size: 34px;
+  line-height: 40px;
+}

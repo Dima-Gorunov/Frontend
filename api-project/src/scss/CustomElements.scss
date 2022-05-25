@@ -1,0 +1,15 @@
+.menu__custom-link-container {
+  display: flex;
+  font-family: 'Proxima Nova Condensed Semibold', cursive;
+  font-size: 14px;
+  font-weight: 600;
+  .custom-link {
+    padding: 11.5px 40.5px;
+    display: flex;
+    color: $background_dark;
+    background-color: $background_light;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+  }
+}
