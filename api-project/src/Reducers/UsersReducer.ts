@@ -4,8 +4,20 @@ import {setLoading} from "./AppReducer";
 const SET_USERS = "SET_USERS"
 const FILTER_USER = "FILTER_USER"
 const POST_USER = "POST_USER"
+
+type UserType = {
+    id: number,
+    name: string,
+    username: string,
+    email: string,
+    address: object,
+    phone: string,
+    website: string,
+    company: object
+}
+
 type initialStateType = {
-    Users: null | Array<any>
+    Users: null | Array<UserType>
 }
 
 let initialState: initialStateType = {
@@ -14,6 +26,7 @@ let initialState: initialStateType = {
 
 
 let UsersReducer = (state = initialState, action: any): initialStateType => {
+
     switch (action.type) {
         case SET_USERS: {
             return {
@@ -30,7 +43,6 @@ let UsersReducer = (state = initialState, action: any): initialStateType => {
     }
 }
 
-
 export const getUsersThunk = () => {
     return async (dispatch: any) => {
         dispatch(setLoading(true))
@@ -39,11 +51,13 @@ export const getUsersThunk = () => {
         dispatch(setLoading(false))
     }
 }
+
 export const postUserThunk = () => {
     return async (dispatch: any) => {
 
     }
 }
+
 export const delUserThunk = (id: any) => {
     return async (dispatch: any) => {
 
@@ -58,8 +72,6 @@ export const checkServerThunk = () => {
 }
 
 
-const setUsers = (Users: any) => ({type: SET_USERS, payload: Users})
-
-export const postUser = (User: any) => ({type: POST_USER, payload: User})
-
+const setUsers = (Users: Array<UserType>) => ({type: SET_USERS, payload: Users})
+export const postUser = (User: Array<UserType>) => ({type: POST_USER, payload: User})
 export default UsersReducer

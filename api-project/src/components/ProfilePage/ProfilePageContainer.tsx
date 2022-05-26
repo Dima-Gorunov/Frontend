@@ -9,6 +9,7 @@ import Preloader from "../Preloader";
 import {getLoad} from "../../Selectors/AppSelector";
 
 const ProfilePageContainer = (props: any) => {
+
     let UserId = useParams().UserId
 
     useEffect(() => {

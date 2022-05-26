@@ -4,8 +4,8 @@ import {connect} from "react-redux";
 import Header from "./Header";
 
 const HeaderContainer = (props: any) => {
-
-    return <Header/>
+    //на будущее
+    return <Header {...props}/>
 };
 
 let mapStateToProps = (state: any) => {

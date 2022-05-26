@@ -9,10 +9,9 @@ let initialState = {
     Loading: false
 }
 
-
 let AppReducer = (state = initialState, action: any): typeof initialState => {
-    switch (action.type) {
 
+    switch (action.type) {
         case SET_INITIALIZED: {
             return {
                 ...state,

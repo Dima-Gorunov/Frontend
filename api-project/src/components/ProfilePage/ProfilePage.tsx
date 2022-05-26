@@ -1,8 +1,13 @@
-import React from 'react';
-import {PostType} from "../../Reducers/ProfileReducer";
+import React, {useEffect, useState} from 'react';
 import CustomLink from "../../CustomElements/CustomLink";
+import CustomButton from "../../CustomElements/CustomButton";
+import {PostType} from "../../Reducers/PostsReducer";
 
 const ProfilePage = ({Profile, Posts}: any) => {
+
+    let [uploadValid, setUploadValid] = useState(false) //если true - загружаются все посты пользователя
+    let convertText = (text: string) => text.split("").map((e, index) => index === 0 ? e.toUpperCase() : e).join("")
+
     return (
         <div className="profile-page-container">
             <div className="info-container">
@@ -10,24 +15,31 @@ const ProfilePage = ({Profile, Posts}: any) => {
                     {`${Profile.name}`}
                 </div>
                 <div className="contacts-container">
-                    <div>{Profile.address.city}</div>
-                    <div>{Profile.email}</div>
-                    <div>{Profile.phone}</div>
-                    <div>{Profile.website}</div>
-                    <div>Компания: {Profile.company.name}</div>
+                    <div>
+                        <div>Город: {Profile.address.city}</div>
+                        <div>Email: {Profile.email}</div>
+                        <div>Телефон: {Profile.phone}</div>
+                    </div>
+                    <div>
+                        <div>Веб-сайт: {Profile.website}</div>
+                        <div>Компания: {Profile.company.name}</div>
+                    </div>
+                </div>
+                <div className="title-text">
+                    Посты пользователя:
                 </div>
                 <div className="card-container">
-                    {Posts.slice(0, 3).map((e: PostType, index: any) => (
-                        <div className="card">
-                            <div className="title-text">{e.title}</div>
-                            <div>{e.body}</div>
-                            <CustomLink to="comments">подробнее</CustomLink>
+                    {Posts.slice(0, uploadValid ? Posts.length : 3).map((e: PostType, index: any) => (
+                        <div className="card" key={`post_${index}`}>
+                            <div className="title-text">{convertText(e.title.slice(0, 15))}...</div>
+                            <div className="sub-title-text">{convertText(e.body.slice(0, 45))}...</div>
+                            <CustomLink to={`post/${e.id}`}>подробнее</CustomLink>
                         </div>
                     ))}
+                    {!uploadValid && <CustomButton onClick={() => setUploadValid(true)}>Загрузить</CustomButton>}
                 </div>
             </div>
         </div>
-
     );
 };
 

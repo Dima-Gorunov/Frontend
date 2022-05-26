@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 const instance = axios.create({
     baseURL: 'https://jsonplaceholder.typicode.com/',
     headers: {'X-Custom-Header': 'foobar'}
@@ -16,13 +15,14 @@ export const ProfileApi = {
     }
 }
 
-
 export const PostApi = {
     getPost(limit = 10, page = 1) {
         return instance.get(`posts?_limit=${limit}`)
+    },
+    getOnePost(userId: number, postId: number) {
+        return instance.get(`users/${userId}/posts?id=${postId}`)
     }
 }
-
 
 export const UsersApi = {
     getUsers() {

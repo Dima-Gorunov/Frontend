@@ -8,6 +8,7 @@ import {getLoad} from "../Selectors/AppSelector";
 import Preloader from "./Preloader";
 
 const UsersPageContainer = (props: any) => {
+
     useEffect(() => {
         props.getUsersThunk();
     }, [])
@@ -15,13 +16,13 @@ const UsersPageContainer = (props: any) => {
     return props.Loading || !props.Users ? <Preloader/> : <UsersPage {...props}/>
 };
 
-
 let mapStateToProps = (state: any) => {
     return {
         Users: getUsersSel(state),
         Loading: getLoad(state)
     }
 }
+
 export default compose(
     connect(mapStateToProps, {
         getUsersThunk,

@@ -4,10 +4,10 @@ import {connect} from "react-redux";
 
 const HavePosts = (Component: any) => {
 
-
     const PostComponent = (props: any) => {
         return props.Posts ? <Component Posts={props.Posts}/> : <div>Постов нет</div>
     }
+
     let mapStateToProps = (state: any) => {
         return {
             Posts: state.App.Posts
@@ -15,7 +15,6 @@ const HavePosts = (Component: any) => {
     }
 
     return connect(mapStateToProps, {})(PostComponent)
-
 };
 
 export default HavePosts;

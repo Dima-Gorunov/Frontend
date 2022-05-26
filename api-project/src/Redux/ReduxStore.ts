@@ -9,7 +9,7 @@ import ProfileReducer from "../Reducers/ProfileReducer";
 
 const reducers = combineReducers({
     App: AppReducer,
-    Posts: PostsReducer,
+    PostsData: PostsReducer,
     UsersPage: UsersReducer,
     ProfilePage: ProfileReducer
 })

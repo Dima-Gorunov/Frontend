@@ -1,14 +1,14 @@
 import React, {useEffect} from 'react';
 import './scss/All.scss';
-import PostsContainer from "./components/PostsContainer";
+import PostsContainer from "./components/PostsPageContainer";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {initializedApp} from "./Reducers/AppReducer";
 import {Link, Outlet, Route, Routes} from "react-router-dom";
-import HomePageContainer from "./components/HeaderContainer";
+import HomePageContainer from "./components/Header/HeaderContainer";
 import UsersPageContainer from "./components/UsersPageContainer";
 import PageNotFound from "./components/PageNotFound";
-import HeaderContainer from "./components/HeaderContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 import FooterContainer from "./components/Footer/FooterContainer";
 import ProfilePageContainer from "./components/ProfilePage/ProfilePageContainer";
 
@@ -26,9 +26,9 @@ let App = (props: any) => {
                 <Routes>
                     <Route index element={<UsersPageContainer/>}/>
                     <Route path="*" element={<PageNotFound/>}/>
-                    <Route path="posts/*" element={<PostsContainer/>}/>
                     <Route path="about/*" element={<div>о нас</div>}/>
                     <Route path="user/:UserId" element={<ProfilePageContainer/>}/>
+                    <Route path="user/:UserId/post/:PostId" element={<PostsContainer/>}/>
                 </Routes>
             </div>
             <FooterContainer/>

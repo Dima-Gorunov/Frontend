@@ -1,17 +1,33 @@
 
 .profile-page-container {
-  padding: 36px 62px 0 53px;
 
-  .title-text {
-    margin-bottom: 16px;
+}
+
+.contacts-container {
+  font-family: "Open Sans Bold", cursive;
+  margin-bottom: 16px;
+  position: relative;
+  font-size: 17px;
+  line-height: 23px;
+  border-bottom: 2px solid black;
+  display: flex;
+  flex-wrap: wrap;
+
+  > div {
+    min-width: 350px;
+  position: relative;
+  }
+  > div::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: black;
+    width: 2px;
+    height: 130px;
   }
 
-  .card {
-    .title-text {
-      font-family: 'Open Sans Bold', cursive;
-      font-weight: 700;
-      font-size: 20px;
-      line-height: 20px;
-    }
+  div {
+    margin-bottom: 15px;
   }
 }
