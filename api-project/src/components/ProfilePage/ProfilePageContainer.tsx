@@ -6,23 +6,23 @@ import {useParams} from "react-router-dom";
 import {setProfileThunk} from "../../Reducers/ProfileReducer";
 import {getProfile, getProfilePosts} from "../../Selectors/ProfileSelector";
 import Preloader from "../Preloader";
+import {getLoad} from "../../Selectors/AppSelector";
 
 const ProfilePageContainer = (props: any) => {
     let UserId = useParams().UserId
+
     useEffect(() => {
         props.setProfileThunk(UserId)
     }, [])
 
-    if (!props.Profile && !props.Posts) {
-        return <Preloader/>
-    }
-    return <ProfilePage {...props}/>
+    return props.Loading || !props.Profile ? <Preloader/> : <ProfilePage {...props}/>
 };
 
 let mapStateToProps = (state: any) => {
     return {
         Profile: getProfile(state),
-        Posts: getProfilePosts(state)
+        Posts: getProfilePosts(state),
+        Loading: getLoad(state)
     }
 }
 

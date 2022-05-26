@@ -4,7 +4,7 @@ import CustomLink from "../CustomElements/CustomLink";
 import {checkServerThunk} from "../Reducers/UsersReducer";
 import {PostApi} from "../Api/Api";
 
-const UsersPage = ({Users, postUserThunk, delUserThunk, checkServerThunk}: any) => {
+const UsersPage = ({Users, delUserThunk, checkServerThunk}: any) => {
     let id = 14;
     let delId = 0;
     let pushUser = () => {
@@ -26,22 +26,15 @@ const UsersPage = ({Users, postUserThunk, delUserThunk, checkServerThunk}: any) 
             <button onClick={() => pushUser()}>добавить</button>
             <button onClick={() => delUser()}>удалить</button>
             <button onClick={() => check()}>обновить</button>
-            <div className="users-container">
+            <div className="card-container">
                 {Users.map((e: any, index: any) => (
-                    <div key={`user_${index}`} className="user_card-container">
+                    <div key={`user_${index}`} className="card">
                         <div>{e.name}</div>
                         <div>город</div>
                         <CustomLink to={`user/${e.id}`}>Смотреть профиль</CustomLink>
                     </div>
                 ))
                 }
-            </div>
-            <div>
-                {Users.map((e: any, index: any) => (
-                    <div key={`user_${index}`}>
-                        {e.name}
-                    </div>
-                ))}
             </div>
         </div>
     );

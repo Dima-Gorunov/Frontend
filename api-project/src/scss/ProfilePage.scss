@@ -3,8 +3,15 @@
   padding: 36px 62px 0 53px;
 
   .title-text {
-
     margin-bottom: 16px;
+  }
 
+  .card {
+    .title-text {
+      font-family: 'Open Sans Bold', cursive;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 20px;
+    }
   }
 }

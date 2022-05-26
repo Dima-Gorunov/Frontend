@@ -2,32 +2,23 @@ import {PostApi, UsersApi} from "../Api/Api";
 import {setLoading} from "./AppReducer";
 
 const SET_USERS = "SET_USERS"
-const SET_LOADING = "SET_LOADING"
+const FILTER_USER = "FILTER_USER"
 const POST_USER = "POST_USER"
-let initialState = {
-    Users: Array(),
-    Loading: false
+type initialStateType = {
+    Users: null | Array<any>
+}
+
+let initialState: initialStateType = {
+    Users: null
 }
 
 
-let UsersReducer = (state = initialState, action: any): typeof initialState => {
+let UsersReducer = (state = initialState, action: any): initialStateType => {
     switch (action.type) {
         case SET_USERS: {
             return {
                 ...state,
                 Users: action.payload
-            }
-        }
-        case SET_LOADING: {
-            return {
-                ...state,
-                Loading: action.payload
-            }
-        }
-        case POST_USER: {
-            return {
-                ...state,
-                Users: [...state.Users, action.payload]
             }
         }
         default: {
@@ -40,12 +31,10 @@ let UsersReducer = (state = initialState, action: any): typeof initialState => {
 }
 
 
-export const getUsersThunk = (limit: number, page: number) => {
+export const getUsersThunk = () => {
     return async (dispatch: any) => {
         dispatch(setLoading(true))
-
-        let data = await UsersApi.getUsers(limit, page)
-
+        let data = await UsersApi.getUsers()
         dispatch(setUsers(data))
         dispatch(setLoading(false))
     }

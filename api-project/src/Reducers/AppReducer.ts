@@ -35,8 +35,8 @@ let AppReducer = (state = initialState, action: any): typeof initialState => {
 
 
 export const initializedApp = () => {
-    return (dispatch: any) => {
-        dispatch(setInitialized())
+    return async (dispatch: any) => {
+        await dispatch(setInitialized())
     }
 }
 

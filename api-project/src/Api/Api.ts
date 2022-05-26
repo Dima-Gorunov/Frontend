@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const instance = axios.create({
-    baseURL: 'http://localhost:3001/',
+    baseURL: 'https://jsonplaceholder.typicode.com/',
     headers: {'X-Custom-Header': 'foobar'}
 })
 
@@ -11,7 +11,7 @@ export const ProfileApi = {
     getProfile(id: number) {
         return instance.get(`users/${id}`)
     },
-    getPosts(id:number){
+    getPosts(id: number) {
         return instance.get(`posts?userId=${id}`)
     }
 }
@@ -25,8 +25,7 @@ export const PostApi = {
 
 
 export const UsersApi = {
-    getUsers(limit = 100, page = 1) {
-
+    getUsers() {
         return instance.get(`users`).then(response => response.data)
     }
 }

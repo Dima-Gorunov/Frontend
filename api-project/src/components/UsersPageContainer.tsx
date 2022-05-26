@@ -12,7 +12,7 @@ const UsersPageContainer = (props: any) => {
         props.getUsersThunk();
     }, [])
 
-    return props.Loading ? <Preloader/> : <UsersPage {...props}/>
+    return props.Loading || !props.Users ? <Preloader/> : <UsersPage {...props}/>
 };
 
 

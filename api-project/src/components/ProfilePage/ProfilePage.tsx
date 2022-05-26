@@ -1,5 +1,6 @@
 import React from 'react';
 import {PostType} from "../../Reducers/ProfileReducer";
+import CustomLink from "../../CustomElements/CustomLink";
 
 const ProfilePage = ({Profile, Posts}: any) => {
     return (
@@ -15,11 +16,12 @@ const ProfilePage = ({Profile, Posts}: any) => {
                     <div>{Profile.website}</div>
                     <div>Компания: {Profile.company.name}</div>
                 </div>
-                <div>
-                    Посты:
-                    {Posts.map((e:PostType,index:any)=>(
-                        <div>
-                            {e.title}
+                <div className="card-container">
+                    {Posts.slice(0, 3).map((e: PostType, index: any) => (
+                        <div className="card">
+                            <div className="title-text">{e.title}</div>
+                            <div>{e.body}</div>
+                            <CustomLink to="comments">подробнее</CustomLink>
                         </div>
                     ))}
                 </div>
