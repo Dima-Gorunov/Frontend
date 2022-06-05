@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'Impact';
+  src: url('../Fonts/Impact/impact.eot'); /* IE 9 Compatibility Mode */
+  src: url('../Fonts/Impact/impact.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+  url('../Fonts/Impact/impact.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../Fonts/Impact/impact.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+  url('../Fonts/Impact/impact.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('../Fonts/Impact/impact.svg#impact') format('svg'); /* Chrome < 4, Legacy iOS */
+}

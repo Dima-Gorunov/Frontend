@@ -16,8 +16,7 @@ const LoginForm = (props) => {
         <div className="App">
             <Formik
                 initialValues={{email: "", password: ""}}
-                onSubmit={submit}
-            >
+                onSubmit={submit}>
                 <Form>
                     <Field name="email" type="email" placeholder="email"/><br/>
                     <Field name="password" type="password" placeholder="password"/><br/>
